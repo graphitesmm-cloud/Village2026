@@ -1,0 +1,3484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liwa Village 2026–2027 | Proposal by Graphite Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #3A382F;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+
+    /* ─── CSS VARIABLES ────────────────────────────────────────── */
+        :root {
+      /* ── LIWA VILLAGE PALETTE (from logo) ── */
+      --teal:    #2F8A76;   /* primary accent */
+      --charcoal:#38352F;   /* warm charcoal — text & dark cards */
+      --gold:    #E0A22E;   /* secondary accent */
+      --rust:    #A2542C;   /* tertiary accent */
+      --sand:    #FBF8F2;   /* soft warm off-white */
+      --white:   #ffffff;
+      /* ── Aliases mapped onto village palette ── */
+      --red:     #2F8A76;   /* was red → teal */
+      --blue:    #2F8A76;
+      --pink:    #2F8A76;
+      --black:   #38352F;   /* was black → charcoal */
+      --sema:    #2F8A76;   /* teal */
+      --ghubsha: #A2542C;   /* rust */
+      --argoub:  #C46A2E;   /* warm orange-rust */
+      --rutab:   #E0A22E;   /* gold */
+      --zour:    #8A6B39;   /* earthy gold-brown */
+      --dark:    #38352F;   /* charcoal */
+      --mid:     #F3EEE4;
+      --gray:    #F5F1E8;   /* warm sand section-alt */
+      --text:    #3A382F;
+      --muted:   #8C867A;
+      --radius:  16px;
+      --shadow:  0 8px 32px rgba(56,53,47,0.10), 0 0 0 1px rgba(56,53,47,0.04);
+    }
+
+    /* ─── UTILITY ──────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+    .section { padding: 100px 0; }
+    .section-alt { background: var(--gray); }
+    .section-dark { background: var(--dark); color: var(--white); }
+    .tag {
+      display: inline-block;
+      background: rgba(47,138,118,0.07);
+      color: var(--red);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+    .tag-blue {
+      background: rgba(47,138,118,0.07);
+      color: var(--red);
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+    .section-dark .section-sub { color: rgba(255,255,255,0.65); }
+    .divider {
+      width: 56px; height: 4px;
+      background: var(--red);
+      border-radius: 2px;
+      margin: 20px 0 36px;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(45,41,33,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 32px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 1rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.04em;
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(175deg, rgba(45,41,33,0.74) 0%, rgba(45,41,33,0.55) 45%, rgba(45,41,33,0.62) 100%),
+        url('web_assets/v_hero_bg.jpg') center 40% / cover no-repeat;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 32px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Desert dune shapes */
+    #hero::before {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 140px;
+      background: var(--white);
+      clip-path: ellipse(60% 100% at 50% 100%);
+      z-index: 0;
+    }
+    /* Grain texture overlay */
+    #hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+    .hero-title {
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 24px;
+      position: relative; z-index: 1;
+    }
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(110deg, var(--gold) 0%, #F5D48A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.7);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 52px;
+      position: relative; z-index: 1;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      justify-content: center;
+      position: relative; z-index: 2;
+      margin-bottom: 80px;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(8px);
+      border-radius: 100px;
+      padding: 10px 22px;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--white);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero-badge .dot.pink { background: var(--argoub); }
+    .hero-badge .dot.blue { background: var(--sema); }
+    .scroll-hint {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(0,0,0,0.35); z-index: 2;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+      animation: scrollpulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollpulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ─── JOURNEY TIMELINE ─────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--red), rgba(47,138,118,0.15));
+      transform: translateX(-50%);
+    }
+    .tl-item {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 56px 60px 0;
+      width: 50%;
+      position: relative;
+    }
+    .tl-item:nth-child(even) {
+      justify-content: flex-start;
+      padding: 0 0 60px 56px;
+      margin-left: 50%;
+    }
+    .tl-dot {
+      position: absolute;
+      right: -14px; top: 14px;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px var(--black);
+      z-index: 2;
+    }
+    .tl-item:nth-child(even) .tl-dot {
+      right: auto; left: -14px;
+    }
+    .tl-dot.active {
+      background: var(--red);
+      box-shadow: 0 0 0 3px var(--red), 0 0 20px rgba(47,138,118,0.3);
+    }
+    .tl-card {
+      background: var(--white);
+      border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      max-width: 400px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .tl-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+    .tl-year {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 8px;
+    }
+    .tl-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .tl-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .tl-pills {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;
+    }
+    .tl-pill {
+      font-size: 0.7rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .pill-blue { background: rgba(47,138,118,0.1); color: var(--sema); }
+    .pill-pink { background: rgba(196,106,46,0.12); color: var(--argoub); }
+    .pill-gold { background: rgba(224,162,46,0.14); color: var(--zour); }
+    .pill-gray { background: #F0F0F0; color: #444444; }
+    @media (max-width: 768px) {
+      .timeline::before { left: 24px; }
+      .tl-item, .tl-item:nth-child(even) {
+        width: 100%; padding: 0 0 48px 60px; justify-content: flex-start; margin-left: 0;
+      }
+      .tl-dot, .tl-item:nth-child(even) .tl-dot { right: auto; left: 10px; }
+    }
+
+    /* ─── STATS ────────────────────────────────────────────────── */
+    .stats-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: start; margin-bottom: 64px;
+    }
+    @media (max-width: 768px) { .stats-intro { grid-template-columns: 1fr; } }
+    .season-block {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1.5px solid #E8E8E8;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .season-header {
+      padding: 20px 28px;
+      background: var(--black);
+      color: var(--white);
+    }
+    .season-header.gold-header {
+      background: linear-gradient(135deg, #38352F 0%, #2A2722 100%);
+    }
+    .season-header h3 { font-size: 1rem; font-weight: 700; }
+    .season-header span { font-size: 0.78rem; opacity: 0.7; }
+    .season-stats { padding: 24px 28px; display: flex; flex-direction: column; gap: 18px; }
+    .stat-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+    .stat-val {
+      font-size: 1.35rem; font-weight: 800; color: var(--black);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-val.pink { color: var(--red); }
+    .stat-val.gold { color: var(--zour); }
+    .hero-stat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      background: #E0E0E0; border-radius: var(--radius); overflow: hidden;
+      margin-top: 48px;
+    }
+    .hero-stat {
+      background: var(--white);
+      padding: 36px 28px; text-align: center;
+    }
+    .hero-stat .big-num {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900; color: var(--black);
+      line-height: 1;
+    }
+    .hero-stat .big-num.pink { color: var(--red); }
+    .hero-stat .big-num.gold { color: var(--rutab); }
+    .hero-stat .num-label { font-size: 0.82rem; color: var(--muted); margin-top: 8px; font-weight: 500; }
+    @media (max-width: 600px) { .hero-stat-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ─── OPERATIONS ───────────────────────────────────────────── */
+    .ops-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .ops-grid { grid-template-columns: 1fr; } }
+    .ops-visual {
+      background: var(--black);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      color: var(--white);
+    }
+    .ops-visual h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; opacity: 0.85; }
+    .team-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .team-row:last-child { border-bottom: none; }
+    .team-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .team-row-info h4 { font-size: 0.9rem; font-weight: 600; }
+    .team-row-info p { font-size: 0.78rem; opacity: 0.55; margin-top: 2px; }
+    .team-count {
+      margin-left: auto;
+      background: rgba(201,151,58,0.18);
+      color: var(--gold);
+      font-size: 0.75rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .ops-content h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; }
+    .ops-content p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .workflow-steps { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .capture-block { margin-top: 56px; }
+    .capture-block h3 { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
+    .capture-intro { font-size: 0.9rem; color: var(--muted); text-align: center; max-width: 580px; margin: 0 auto 32px; line-height: 1.6; }
+    .capture-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+    @media (max-width: 820px) { .capture-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 460px) { .capture-grid { grid-template-columns: 1fr; } }
+    .capture-item { background: var(--white); border: 1.5px solid #E8E8E8; border-radius: var(--radius); padding: 24px 20px; text-align: center; box-shadow: var(--shadow); }
+    .capture-ico { font-size: 1.6rem; margin-bottom: 10px; }
+    .capture-item h4 { font-size: 0.95rem; font-weight: 800; margin-bottom: 8px; color: var(--red); }
+    .capture-item p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .wf-step {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .wf-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; color: var(--white);
+      flex-shrink: 0;
+    }
+    .wf-step-text h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+    .wf-step-text p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+    .days-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 12px; padding: 12px 20px;
+      font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .days-badge strong { font-size: 1.5rem; font-weight: 900; }
+
+    /* ─── OFFICE TEAM ──────────────────────────────────────────── */
+    .office-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;
+      margin-top: 48px;
+    }
+    .office-card {
+      background: var(--white);
+      border: 1.5px solid #E5E8FF;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .office-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .office-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin: 0 auto 16px;
+    }
+    .office-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+    .office-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+    /* ─── LEARNINGS ────────────────────────────────────────────── */
+    .learnings-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+      margin-top: 48px;
+    }
+    .learning-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: background 0.3s;
+    }
+    .learning-card:hover { background: rgba(255,255,255,0.08); }
+    .learning-icon {
+      font-size: 2rem; margin-bottom: 16px;
+    }
+    .learning-card h4 {
+      font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 10px; color: var(--white);
+    }
+    .learning-card p { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+    .learning-tag {
+      display: inline-block;
+      background: rgba(224,162,46,0.16); color: var(--rutab);
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 3px 10px; border-radius: 100px; margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    /* ─── PROPOSAL 2026-27 ─────────────────────────────────────── */
+    .proposal-hero {
+      background: var(--red);
+      border-radius: 24px;
+      padding: 56px 48px;
+      margin-bottom: 48px;
+      color: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .proposal-hero::before {
+      content: '2026–27';
+      position: absolute; right: 40px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 8rem; font-weight: 900;
+      color: rgba(255,255,255,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .proposal-hero h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 12px; }
+    .proposal-hero p { font-size: 1rem; opacity: 0.7; max-width: 560px; line-height: 1.7; }
+    .proposal-pillars {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+    }
+    .pillar {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1.5px solid #E5E8FF;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .pillar:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(48,63,180,0.16); }
+    .pillar-head {
+      padding: 24px 28px;
+      font-size: 1.05rem; font-weight: 800;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .pillar-head.blue-head { background: var(--black); color: var(--white); }
+    .pillar-head.pink-head { background: var(--red); color: var(--white); }
+    .pillar-head.gold-head { background: linear-gradient(135deg, var(--zour), var(--rutab)); color: var(--white); }
+    .pillar-icon-lg { font-size: 1.6rem; }
+    .pillar-body { padding: 24px 28px; }
+    .pillar-body ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .pillar-body li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.88rem; line-height: 1.55;
+    }
+    .pillar-body li::before {
+      content: '→';
+      color: var(--black); font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+    .pillar-head.pink-head + .pillar-body li::before { color: var(--red); }
+    .pillar-head.gold-head + .pillar-body li::before { color: var(--zour); }
+
+    /* ─── CONTENT IDEAS ────────────────────────────────────────── */
+    .ideas-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+      margin-top: 48px;
+    }
+
+    /* ─── CONTENT PILLARS ─────────────────────────────────────── */
+    /* ─── STORYTELLING APPROACH ───────────────────────────────── */
+    .story-block { margin-top: 48px; margin-bottom: 8px; }
+    .story-head { text-align: center; margin-bottom: 32px; }
+    .story-head h3 { font-size: 1.5rem; font-weight: 800; margin: 12px 0 10px; }
+    .story-head p { font-size: 0.92rem; color: var(--muted); max-width: 640px; margin: 0 auto; line-height: 1.7; }
+    .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 760px) { .story-grid { grid-template-columns: 1fr; } }
+    .story-item {
+      background: var(--white); border: 1.5px solid #E8E8E8; border-radius: var(--radius);
+      padding: 28px 26px; box-shadow: var(--shadow);
+    }
+    .story-num {
+      font-size: 1.1rem; font-weight: 900; color: var(--red);
+      border-bottom: 2px solid rgba(47,138,118,0.2); display: inline-block;
+      padding-bottom: 4px; margin-bottom: 14px;
+    }
+    .story-item h4 { font-size: 1.02rem; font-weight: 800; margin-bottom: 8px; }
+    .story-item p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+    .cpillars { margin-top: 48px; }
+    .cpillars-head { text-align: center; margin-bottom: 32px; }
+    .cpillars-head h3 { font-size: 1.5rem; font-weight: 800; margin: 12px 0 8px; }
+    .cpillars-head p { font-size: 0.9rem; color: var(--muted); max-width: 580px; margin: 0 auto; line-height: 1.6; }
+    .cpillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 820px) { .cpillars-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 460px) { .cpillars-grid { grid-template-columns: 1fr; } }
+    .cpillar {
+      background: var(--white); border: 1.5px solid #E8E8E8; border-radius: var(--radius);
+      padding: 26px 22px; text-align: center; box-shadow: var(--shadow);
+    }
+    .cpillar-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .cpillar h4 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; color: var(--red); }
+    .cpillar p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .pfirst {
+      display: flex; gap: 18px; align-items: center; margin-top: 24px;
+      background: linear-gradient(135deg, #38352F 0%, #2A2722 100%);
+      border-radius: var(--radius); padding: 28px 32px; color: var(--white);
+    }
+    .pfirst-icon { font-size: 1.7rem; flex-shrink: 0; }
+    .pfirst h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; color: var(--white); }
+    .pfirst p { font-size: 0.86rem; line-height: 1.65; color: rgba(255,255,255,0.72); }
+    .channels { margin-top: 32px; }
+    .channels-head { text-align: center; margin-bottom: 28px; }
+    .channels-head h3 { font-size: 1.4rem; font-weight: 800; margin: 12px 0 8px; }
+    .channels-head p { font-size: 0.88rem; color: var(--muted); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+    .channels-grid { display: flex; flex-direction: column; gap: 2px; background: #ECECEC; border-radius: var(--radius); overflow: hidden; border: 1.5px solid #E8E8E8; }
+    .channel-row { display: grid; grid-template-columns: 180px 1fr; gap: 20px; background: var(--white); padding: 18px 24px; align-items: center; }
+    @media (max-width: 600px) { .channel-row { grid-template-columns: 1fr; gap: 6px; } }
+    .channel-name { font-size: 0.95rem; font-weight: 800; color: var(--black); display: flex; align-items: center; gap: 10px; }
+    .ch-ico { color: var(--red); }
+    .channel-detail { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .channel-detail strong { color: var(--red); font-weight: 700; }
+    .viral-target {
+      display: flex; align-items: center; gap: 28px; margin-top: 24px;
+      background: linear-gradient(135deg, #38352F 0%, #2A2722 100%);
+      border-radius: var(--radius); padding: 32px 36px; color: var(--white);
+    }
+    @media (max-width: 560px) { .viral-target { flex-direction: column; text-align: center; gap: 16px; } }
+    .viral-pct { font-size: 3.4rem; font-weight: 900; color: var(--rutab); line-height: 1; flex-shrink: 0; }
+    .viral-text h4 { font-size: 1.05rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+    .viral-text p { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.72); }
+    .viral-text strong { color: var(--rutab); }
+    .cards-bridge {
+      text-align: center; font-size: 0.9rem; color: var(--muted);
+      max-width: 600px; margin: 40px auto 0; line-height: 1.6; font-style: italic;
+    }
+
+    .idea-card {
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      border: 1.5px solid #E5E8FF;
+      background: var(--white);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .idea-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .idea-badge {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+      margin-bottom: 14px; display: inline-block;
+    }
+    .idea-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .idea-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── WHY US ───────────────────────────────────────────────── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;
+      margin-top: 48px;
+    }
+    .why-card {
+      text-align: center; padding: 36px 24px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.3s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.08); }
+    .why-num {
+      font-size: 3.5rem; font-weight: 900; line-height: 1;
+      background: linear-gradient(135deg, var(--rutab) 0%, #F5D48A 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    .why-card h4 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .why-statements {
+      display: flex; flex-direction: column; gap: 16px; margin-top: 48px;
+    }
+    .why-stmt {
+      display: flex; align-items: flex-start; gap: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+    }
+    .why-stmt-icon {
+      font-size: 1.8rem; flex-shrink: 0;
+    }
+    .why-stmt-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .why-stmt-text p { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+    /* ─── VIDEO SECTION ────────────────────────────────────────── */
+    .video-placeholder {
+      background: var(--black);
+      border-radius: 24px;
+      border: 2px dashed rgba(224,162,46,0.4);
+      padding: 80px 48px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px;
+      min-height: 340px;
+    }
+    .play-btn {
+      width: 80px; height: 80px;
+      background: var(--rutab);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 0 40px rgba(224,162,46,0.35);
+    }
+    .video-placeholder h3 { font-size: 1.5rem; font-weight: 800; color: var(--white); }
+    .video-placeholder p { font-size: 0.9rem; color: rgba(255,255,255,0.5); max-width: 480px; }
+
+    /* ─── CTA ──────────────────────────────────────────────────── */
+    #cta {
+      background: var(--black);
+      padding: 120px 32px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(47,138,118,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900; color: var(--white);
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    .cta-title em {
+      font-style: normal;
+      background: linear-gradient(110deg, var(--rutab) 0%, #F5D48A 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cta-sub { font-size: 1.05rem; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 48px; line-height: 1.7; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 100px;
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.04em; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(47,138,118,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(47,138,118,0.35); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+    .cta-footer {
+      margin-top: 72px; padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .cta-footer-brand { font-size: 1rem; font-weight: 700; color: var(--white); }
+    .cta-footer-brand span { color: var(--rutab); }
+    .cta-footer-info { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ─── SCROLL ANIMATIONS ────────────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-d1 { transition-delay: 0.1s; }
+    .fade-up-d2 { transition-delay: 0.2s; }
+    .fade-up-d3 { transition-delay: 0.3s; }
+    .fade-up-d4 { transition-delay: 0.4s; }
+    .fade-up-d5 { transition-delay: 0.5s; }
+    .fade-up-d6 { transition-delay: 0.6s; }
+
+    /* ─── SECTION LABEL (floating) ─────────────────────────────── */
+    .section-label {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 48px;
+    }
+    .section-label-num {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em;
+      color: var(--blue); background: rgba(48,63,180,0.08);
+      padding: 4px 12px; border-radius: 100px;
+    }
+    .section-label-line { flex: 1; height: 1px; background: #E5E8FF; }
+    .section-dark .section-label-line { background: rgba(255,255,255,0.1); }
+    .section-dark .section-label-num { background: rgba(224,162,46,0.16); color: var(--rutab); }
+
+    /* ─── ACCOUNT STRATEGY ─────────────────────────────────────── */
+    .account-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 640px) { .account-split { grid-template-columns: 1fr; } }
+    .account-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1.5px solid #E5E8FF;
+      box-shadow: var(--shadow);
+    }
+    .account-card-head {
+      padding: 24px 28px;
+      font-weight: 800; font-size: 1.1rem;
+      color: var(--white);
+    }
+    .account-card-head.blue { background: linear-gradient(135deg, var(--blue), var(--mid)); }
+    .account-card-head.gold { background: linear-gradient(135deg, #8B5E0A, #C9973A); }
+    .account-card-body { padding: 20px 28px; background: var(--white); }
+    .account-card-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .account-card-body li { font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; color: #374151; }
+    .account-card-body li span { flex-shrink: 0; font-size: 1rem; }
+
+    /* ─── IMAGE PLACEHOLDERS ───────────────────────────────────── */
+    .img-placeholder {
+      background: #F0F0F0;
+      border: 2px dashed #CCCCCC;
+      border-radius: var(--radius);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; text-align: center;
+      color: #999; padding: 32px;
+      position: relative; overflow: hidden;
+    }
+    .img-placeholder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 10px,
+        rgba(0,0,0,0.015) 10px, rgba(0,0,0,0.015) 20px
+      );
+    }
+    .img-placeholder .ph-icon { font-size: 2.5rem; opacity: 0.4; }
+    .img-placeholder .ph-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #AAAAAA;
+      background: white; padding: 4px 14px; border-radius: 100px;
+      border: 1px solid #DDD; position: relative; z-index: 1;
+    }
+    .img-placeholder .ph-desc {
+      font-size: 0.72rem; color: #BBBBBB;
+      max-width: 240px; line-height: 1.5; position: relative; z-index: 1;
+    }
+    /* hero placeholder */
+    .hero-img-note {
+      position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+      background: rgba(47,138,118,0.12); border: 1px dashed rgba(47,138,118,0.35);
+      border-radius: 8px; padding: 8px 20px; z-index: 3;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-img-note::before { content: '📸'; font-size: 0.9rem; }
+
+    /* ─── PLATFORM LINKS ───────────────────────────────────────── */
+    .platform-strip {
+      padding: 20px 28px;
+      background: #FAFAFA;
+      border-top: 1px solid #EEEEEE;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .platform-strip-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #AAAAAA; margin-right: 4px;
+      white-space: nowrap;
+    }
+    .platform-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+      text-decoration: none; transition: all 0.2s;
+      border: 1.5px solid transparent;
+    }
+    .platform-btn:hover { transform: translateY(-2px); }
+    .pb-ig  { background: rgba(225,48,108,0.08);  color: #E1306C; border-color: rgba(225,48,108,0.2); }
+    .pb-ig:hover  { background: rgba(225,48,108,0.15); }
+    .pb-tt  { background: rgba(0,0,0,0.06);        color: #000000; border-color: rgba(0,0,0,0.15); }
+    .pb-tt:hover  { background: rgba(0,0,0,0.12); }
+    .pb-yt  { background: rgba(47,138,118,0.08);      color: var(--teal); border-color: rgba(47,138,118,0.2); }
+    .pb-yt:hover  { background: rgba(47,138,118,0.15); }
+    .pb-x   { background: rgba(0,0,0,0.06);        color: #000000; border-color: rgba(0,0,0,0.15); }
+    .pb-x:hover   { background: rgba(0,0,0,0.12); }
+    .pb-sc  { background: rgba(255,252,0,0.1);     color: #C8A800; border-color: rgba(200,168,0,0.25); }
+    .pb-sc:hover  { background: rgba(255,252,0,0.2); }
+
+    /* ─── INFOGRAPHIC: PLATFORM BREAKDOWN ─────────────────────── */
+    .infographic-section {
+      margin-top: 64px;
+      padding-top: 64px;
+      border-top: 1px solid #EEEEEE;
+    }
+    .infographic-title {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #AAAAAA; margin-bottom: 32px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .infographic-title::after { content: ''; flex: 1; height: 1px; background: #EEEEEE; }
+
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    @media (max-width: 760px) { .chart-grid { grid-template-columns: 1fr; } }
+
+    .chart-block h4 {
+      font-size: 0.88rem; font-weight: 700; margin-bottom: 6px;
+    }
+    .chart-block .chart-sub {
+      font-size: 0.75rem; color: var(--muted); margin-bottom: 20px;
+    }
+    .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+    .bar-row { display: flex; flex-direction: column; gap: 4px; }
+    .bar-meta {
+      display: flex; justify-content: space-between;
+      font-size: 0.72rem; font-weight: 600;
+    }
+    .bar-name { color: #333; }
+    .bar-value { color: var(--muted); }
+    .bar-track {
+      height: 8px; background: #F0F0F0; border-radius: 100px; overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%; border-radius: 100px;
+      width: 0%; transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    .bar-fill.red   { background: var(--red); }
+    .bar-fill.sema  { background: var(--sema); }
+    .bar-fill.rutab { background: var(--rutab); }
+    .bar-fill.argoub{ background: var(--argoub); }
+    .bar-fill.zour  { background: var(--zour); }
+    .bar-fill.black { background: var(--black); }
+    .bar-fill.ghubsha { background: var(--ghubsha); }
+
+    /* ─── INFOGRAPHIC: SEASON COMPARISON ──────────────────────── */
+    .season-compare {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+      margin-top: 48px; border: 1.5px solid #E8E8E8; border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .sc-col { padding: 32px 28px; }
+    .sc-col.sc-left  { background: var(--white); }
+    .sc-col.sc-mid   {
+      background: var(--black); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 24px 20px;
+      min-width: 120px;
+    }
+    .sc-col.sc-right { background: #FAFAFA; }
+    .sc-season-label {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.16em;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .sc-left .sc-season-label  { color: var(--red); }
+    .sc-right .sc-season-label { color: var(--rutab); }
+    .sc-mid-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      writing-mode: vertical-rl; text-orientation: mixed;
+    }
+    .sc-metric { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #F0F0F0; }
+    .sc-right .sc-metric { border-bottom-color: #EBEBEB; }
+    .sc-metric:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .sc-metric-label { font-size: 0.72rem; color: var(--muted); margin-bottom: 4px; }
+    .sc-metric-val { font-size: 1.4rem; font-weight: 900; color: var(--black); }
+    .sc-metric-val.accent { color: var(--red); }
+    .sc-metric-val.gold   { color: var(--rutab); }
+    @media (max-width: 640px) {
+      .season-compare { grid-template-columns: 1fr; }
+      .sc-col.sc-mid { display: none; }
+    }
+
+    /* ─── INFOGRAPHIC: AUDIENCE RINGS ──────────────────────────── */
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-top: 48px;
+    }
+    @media (max-width: 640px) { .audience-grid { grid-template-columns: 1fr; } }
+    .ring-card {
+      background: var(--white); border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius); padding: 28px 24px; text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .ring-wrap {
+      position: relative; width: 110px; height: 110px;
+      margin: 0 auto 16px;
+    }
+    .ring-wrap svg { transform: rotate(-90deg); }
+    .ring-bg  { fill: none; stroke: #F0F0F0; stroke-width: 8; }
+    .ring-val { fill: none; stroke-width: 8; stroke-linecap: round;
+      stroke-dasharray: 283; stroke-dashoffset: 283;
+      transition: stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);
+    }
+    .ring-text {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .ring-pct { font-size: 1.4rem; font-weight: 900; color: var(--black); line-height: 1; }
+    .ring-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+    .ring-card p  { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+
+    /* ─── OPS IMAGE PLACEHOLDERS ───────────────────────────────── */
+    .ops-img-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;
+    }
+    @media (max-width: 640px) { .ops-img-grid { grid-template-columns: 1fr; } }
+
+    /* ─── WHY-US BACKGROUND PLACEHOLDER ───────────────────────── */
+    .why-bg-placeholder {
+      position: absolute; inset: 0; z-index: 0;
+      background: #111111;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-bg-placeholder .ph-note {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.2);
+      border: 1px dashed rgba(255,255,255,0.15);
+      padding: 8px 20px; border-radius: 100px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ─── CONTENT MOSAIC PLACEHOLDERS ──────────────────────────── */
+    .mosaic-placeholder {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+      margin-top: 48px;
+    }
+    @media (max-width: 640px) { .mosaic-placeholder { grid-template-columns: 1fr 1fr; } }
+    .mosaic-ph-item {
+      aspect-ratio: 3/4;
+      background: #F0F0F0; border: 1.5px dashed #D5D5D5;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; text-align: center; padding: 16px;
+    }
+    .mosaic-ph-item .mph-icon { font-size: 1.6rem; opacity: 0.35; }
+    .mosaic-ph-item .mph-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #C0C0C0;
+    }
+
+    /* ─── CAPABILITY BLOCKS (Achievements rebuild) ─────────────── */
+    .capability-block {
+      background: var(--white);
+      border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 36px;
+    }
+    .cap-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap; margin-bottom: 28px;
+    }
+    .cap-season {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 6px;
+    }
+    .cap-title { font-size: 1.4rem; font-weight: 800; line-height: 1.2; }
+    .cap-badge {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+      padding: 8px 16px; border-radius: 100px; white-space: nowrap;
+    }
+    .cap-badge-two { background: rgba(47,138,118,0.08); color: var(--red); }
+    .cap-badge-one { background: #F0EBE1; color: var(--muted); }
+    /* Solid bubble variants for the comparison header */
+    .compare-head .cap-badge {
+      display: inline-block; font-size: 0.74rem; font-weight: 800;
+      padding: 7px 18px; letter-spacing: 0.03em;
+    }
+    .compare-head .cap-badge-two {
+      background: var(--red); color: var(--white);
+      box-shadow: 0 4px 12px rgba(47,138,118,0.25);
+    }
+    .compare-head .cap-badge-one {
+      background: rgba(255,255,255,0.12); color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .cap-stat-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+      background: #ECECEC; border-radius: 12px; overflow: hidden;
+    }
+    @media (max-width: 720px) { .cap-stat-grid { grid-template-columns: 1fr 1fr; } }
+    .cap-stat { background: var(--white); padding: 28px 20px; text-align: center; }
+    .cap-num {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900;
+      line-height: 1; color: var(--black);
+    }
+    .cap-num.pink { color: var(--red); }
+    .cap-num.gold { color: var(--rutab); }
+    .cap-label {
+      font-size: 0.82rem; color: var(--text); font-weight: 600;
+      margin-top: 10px; display: flex; flex-direction: column; gap: 3px;
+    }
+    .cap-note {
+      font-size: 0.68rem; color: var(--muted); font-weight: 400;
+    }
+    .cap-caption {
+      font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+      margin-top: 24px;
+    }
+    .cap-takeaway {
+      display: flex; align-items: flex-start; gap: 20px;
+      background: var(--black); color: var(--white);
+      border-radius: var(--radius); padding: 32px 36px;
+      margin-top: 32px;
+    }
+    .cap-takeaway-icon {
+      font-size: 1.8rem; color: var(--rutab); flex-shrink: 0; line-height: 1.4;
+    }
+    .cap-takeaway h4 {
+      font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; color: var(--white);
+    }
+    .cap-takeaway p {
+      font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.7);
+    }
+
+    /* ─── TOTALS BANNER ───────────────────────────────────────── */
+    .totals-banner {
+      background: linear-gradient(135deg, #38352F 0%, #2A2722 100%);
+      border-radius: var(--radius);
+      padding: 36px 36px 28px;
+      color: var(--white);
+    }
+    .totals-banner-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--rutab);
+      text-align: center; margin-bottom: 28px;
+    }
+    .totals-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    }
+    @media (max-width: 720px) { .totals-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; } }
+    .total-stat { text-align: center; }
+    .total-num {
+      font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900;
+      line-height: 1; color: var(--white);
+      font-variant-numeric: tabular-nums;
+    }
+    .total-plus { color: var(--rutab); }
+    .total-label {
+      font-size: 0.85rem; font-weight: 600;
+      color: rgba(255,255,255,0.7); margin-top: 12px;
+    }
+    .total-fn { font-size: 0.6rem; color: var(--rutab); margin-left: 1px; }
+    .totals-fn-note {
+      font-size: 0.7rem; color: rgba(255,255,255,0.4);
+      text-align: center; margin-top: 28px;
+    }
+
+    /* ─── BADGED COMPARISON TABLE ─────────────────────────────── */
+    .compare-wrap {
+      background: var(--white);
+      border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-top: 32px;
+    }
+    .compare-head {
+      display: grid; grid-template-columns: 1.3fr 1fr 1fr;
+      background: var(--black); color: var(--white);
+      padding: 22px 28px;
+    }
+    .compare-head-cell { text-align: center; }
+    .compare-metric-head {
+      text-align: left; align-self: center;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+    }
+    .compare-season {
+      font-size: 0.8rem; font-weight: 700; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .compare-accts {
+      font-size: 0.68rem; color: rgba(255,255,255,0.5); margin-top: 8px;
+    }
+    .compare-row {
+      display: grid; grid-template-columns: 1.3fr 1fr 1fr;
+      align-items: center;
+      padding: 18px 28px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .compare-row:nth-child(even) { background: #FAFAFA; }
+    .compare-metric { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .compare-val {
+      text-align: center; font-size: 1.25rem; font-weight: 800;
+      color: #999; font-variant-numeric: tabular-nums;
+    }
+    .compare-val.strong { color: var(--black); }
+    .compare-row-flip .compare-val.strong { color: var(--red); }
+    .compare-note {
+      padding: 20px 28px; background: #FBFBFB;
+      font-size: 0.78rem; color: var(--muted); line-height: 1.6;
+      border-top: 1px solid #F0F0F0;
+    }
+    .compare-note strong { color: var(--zour); }
+    @media (max-width: 560px) {
+      .compare-head, .compare-row { grid-template-columns: 1.2fr 1fr 1fr; padding-left: 16px; padding-right: 16px; }
+      .compare-val { font-size: 1rem; }
+      .compare-metric { font-size: 0.8rem; }
+    }
+
+    /* ─── COMPETITIVE LANDSCAPE ───────────────────────────────── */
+    .comp-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      margin-top: 48px;
+    }
+    @media (max-width: 900px) { .comp-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .comp-grid { grid-template-columns: 1fr; } }
+    .comp-card {
+      background: var(--white);
+      border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius);
+      padding: 24px 24px 8px;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column;
+    }
+    .comp-card-bench {
+      border-color: rgba(224,162,46,0.5);
+      background: linear-gradient(180deg, #FFFDF8 0%, var(--white) 40%);
+    }
+    .comp-card-head { margin-bottom: 14px; }
+    .comp-card-head h4 {
+      font-size: 1.05rem; font-weight: 800; line-height: 1.3; color: var(--black);
+    }
+    .comp-card-head h4 span {
+      font-size: 0.82rem; font-weight: 600; color: var(--muted);
+    }
+    .comp-note {
+      font-size: 0.8rem; color: var(--muted); line-height: 1.6;
+      margin-bottom: 18px; flex-grow: 1;
+    }
+    .comp-platforms {
+      list-style: none; border-top: 1px solid #F0F0F0;
+    }
+    .comp-platforms li {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 9px 0; border-bottom: 1px solid #F5F5F5;
+      font-size: 0.82rem;
+    }
+    .cp-name { color: var(--muted); font-weight: 500; }
+    .cp-val {
+      font-weight: 800; color: var(--black);
+      font-variant-numeric: tabular-nums;
+    }
+    .comp-card-bench .cp-val { color: var(--zour); }
+    .comp-footnote {
+      font-size: 0.72rem; color: var(--muted); line-height: 1.6;
+      margin-top: 28px; max-width: 760px;
+    }
+
+    /* ─── AUDIENCE SEGMENTATION ───────────────────────────────── */
+    .seg-block { margin-top: 48px; }
+    .seg-head { text-align: center; margin-bottom: 36px; }
+    .seg-head h3 { font-size: 1.5rem; font-weight: 800; margin: 14px 0 10px; }
+    .seg-head p { font-size: 0.9rem; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+    .seg-cols {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    @media (max-width: 760px) { .seg-cols { grid-template-columns: 1fr; } }
+    .seg-col {
+      background: var(--white); border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow);
+    }
+    .seg-col-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 6px;
+    }
+    .seg-list2 { list-style: none; }
+    .seg-list2 li { padding: 16px 0; border-bottom: 1px solid #F0F0F0; }
+    .seg-list2 li:last-child { border-bottom: none; padding-bottom: 0; }
+    .seg-row-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 4px; }
+    .seg-row-top strong { font-size: 0.95rem; font-weight: 800; color: var(--black); }
+    .seg-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 7px; }
+    .seg-how {
+      font-size: 0.8rem; color: var(--text); font-weight: 600; line-height: 1.45;
+      padding-left: 16px; position: relative;
+    }
+    .seg-how::before { content: '→'; position: absolute; left: 0; color: var(--red); font-weight: 800; }
+    .seg-acct {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.03em;
+      padding: 3px 10px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+    .seg-acct.red  { background: rgba(47,138,118,0.09); color: var(--red); }
+    .seg-acct.gold { background: rgba(224,162,46,0.16); color: var(--rutab); }
+    .seg-acct.pink { background: #EEE; color: #666; }
+    /* markets strip */
+    .seg-markets-strip {
+      margin-top: 20px; background: var(--black); border-radius: var(--radius);
+      padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 36px;
+    }
+    .seg-mk-block { display: flex; align-items: center; gap: 12px; }
+    .seg-mk-label {
+      display: inline-block; font-size: 0.62rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--black); background: var(--rutab);
+      padding: 4px 10px; border-radius: 4px; white-space: nowrap;
+    }
+    .seg-mk-label.dark { background: rgba(255,255,255,0.15); color: var(--white); }
+    .seg-mk-list { font-size: 0.82rem; color: rgba(255,255,255,0.85); font-weight: 500; }
+    .seg-mk-note { flex-basis: 100%; font-size: 0.76rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; }
+
+    /* ─── LANDSCAPE SYNTHESIS ─────────────────────────────────── */
+    .land-synthesis {
+      margin-top: 48px;
+      background: var(--black);
+      border-radius: var(--radius);
+      padding: 40px 40px 44px;
+      color: var(--white);
+    }
+    .land-synthesis-head { text-align: center; margin-bottom: 36px; }
+    .land-synthesis-head h3 {
+      font-size: 1.5rem; font-weight: 800; margin-top: 14px; color: var(--white);
+    }
+    .land-synthesis-intro {
+      font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55);
+      max-width: 620px; margin: 14px auto 0;
+    }
+    .land-synthesis-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px;
+    }
+    @media (max-width: 760px) { .land-synthesis-grid { grid-template-columns: 1fr; gap: 24px; } }
+    .ls-item { display: flex; gap: 18px; align-items: flex-start; }
+    .ls-num {
+      font-size: 0.95rem; font-weight: 900; color: var(--rutab);
+      border: 2px solid rgba(224,162,46,0.4); border-radius: 10px;
+      width: 40px; height: 40px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ls-item h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--white);
+      line-height: 1.4; margin-bottom: 8px;
+    }
+    .ls-item p {
+      font-size: 0.84rem; line-height: 1.65; color: rgba(255,255,255,0.7);
+    }
+    .ls-item strong { color: var(--rutab); font-weight: 700; }
+
+    /* ─── RECOMMENDATIONS ─────────────────────────────────────── */
+    .rec-list {
+      display: flex; flex-direction: column; gap: 16px; margin-top: 48px;
+    }
+    .rec-item {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px;
+      background: var(--white);
+      border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+    }
+    @media (max-width: 760px) { .rec-item { grid-template-columns: 1fr; gap: 20px; } }
+    .rec-obj { display: flex; gap: 18px; align-items: flex-start; }
+    .rec-num {
+      font-size: 1.4rem; font-weight: 900; color: var(--white);
+      background: var(--red);
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .rec-obj-text h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
+    .rec-obj-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .rec-actions {
+      display: flex; flex-direction: column; gap: 12px;
+      justify-content: center;
+      border-left: 1.5px solid #F0F0F0; padding-left: 32px;
+    }
+    @media (max-width: 760px) { .rec-actions { border-left: none; padding-left: 0; border-top: 1.5px solid #F0F0F0; padding-top: 18px; } }
+    .rec-action {
+      font-size: 0.87rem; line-height: 1.5; color: var(--text);
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .rec-action span { color: var(--red); font-weight: 800; flex-shrink: 0; }
+    .rec-action strong { color: var(--zour); }
+    .rec-measure {
+      margin-top: 14px; padding-top: 12px; border-top: 1px dashed #E0E0E0;
+      font-size: 0.78rem; font-weight: 600; color: var(--muted); font-style: italic;
+    }
+    .rec-thread {
+      display: flex; gap: 18px; align-items: center;
+      background: linear-gradient(135deg, #38352F 0%, #2A2722 100%);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 32px; margin-top: 24px;
+    }
+    .rec-thread-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .rec-thread p { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.75); }
+    .rec-thread strong { color: var(--rutab); }
+
+    /* ─── B2B / B2C DUAL AUDIENCE ─────────────────────────────── */
+    .dual-aud { margin-top: 32px; }
+    .dual-aud-head { text-align: center; margin-bottom: 28px; }
+    .dual-aud-head h3 { font-size: 1.4rem; font-weight: 800; margin: 12px 0 8px; }
+    .dual-aud-head p { font-size: 0.88rem; color: var(--muted); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+    .dual-aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 700px) { .dual-aud-grid { grid-template-columns: 1fr; } }
+    .dual-aud-card {
+      background: var(--white); border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow);
+    }
+    .dual-aud-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .dual-aud-tag.b2c { background: var(--red); color: var(--white); }
+    .dual-aud-tag.b2b { background: var(--black); color: var(--white); }
+    .dual-aud-card h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; }
+    .dual-aud-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
+    .dual-aud-list { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .dual-aud-list li {
+      font-size: 0.82rem; color: var(--text); line-height: 1.45; padding-left: 18px; position: relative;
+    }
+    .dual-aud-list li::before { content: '→'; position: absolute; left: 0; color: var(--red); font-weight: 800; }
+    .dual-aud-goal {
+      margin-top: 16px; padding-top: 14px; border-top: 1px dashed #E0E0E0;
+      font-size: 0.82rem; font-weight: 600; color: var(--text);
+    }
+    .dual-aud-goal span {
+      display: inline-block; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--white); background: var(--black);
+      padding: 2px 8px; border-radius: 4px; margin-right: 8px;
+    }
+    .dual-aud-balance {
+      display: flex; gap: 16px; align-items: center; margin-top: 20px;
+      background: #F7F7F7; border: 1.5px solid #ECECEC; border-radius: var(--radius);
+      padding: 22px 26px;
+    }
+    .dab-ico { font-size: 1.4rem; flex-shrink: 0; }
+    .dual-aud-balance p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+    .dual-aud-balance strong { color: var(--black); }
+
+    /* ─── PHASED TIMELINE ─────────────────────────────────────── */
+    .timeline-phases { margin-top: 64px; }
+    /* ─── KPI / TARGETS ───────────────────────────────────────── */
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    @media (max-width: 680px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card {
+      background: linear-gradient(135deg, #38352F 0%, #2A2722 100%);
+      border-radius: var(--radius); padding: 40px 36px; color: var(--white); text-align: center;
+    }
+    .kpi-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rutab); margin-bottom: 16px; }
+    .kpi-num { font-size: clamp(3rem, 7vw, 4.4rem); font-weight: 900; line-height: 1; color: var(--white); font-variant-numeric: tabular-nums; }
+    .kpi-context { font-size: 0.85rem; line-height: 1.65; color: rgba(255,255,255,0.65); margin-top: 18px; max-width: 380px; margin-left: auto; margin-right: auto; }
+    .kpi-extra { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 24px; }
+    .kpi-extra-item {
+      background: var(--white); border: 1.5px solid #E8E8E8; border-radius: 100px;
+      padding: 12px 22px; font-size: 0.85rem; font-weight: 600; color: var(--text);
+      display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow);
+    }
+    .kpi-ico { font-size: 1rem; }
+    .kpi-note { font-size: 0.78rem; color: var(--muted); line-height: 1.6; max-width: 760px; margin: 28px auto 0; text-align: center; }
+    .tp-header { text-align: center; margin-bottom: 40px; }
+    .tp-header h3 { font-size: 1.6rem; font-weight: 800; margin: 14px 0 10px; }
+    .tp-header p { font-size: 0.92rem; color: var(--muted); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+    .tp-track {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+      position: relative;
+    }
+    .tp-track::before {
+      content: ''; position: absolute; top: 22px; left: 8%; right: 8%;
+      height: 2px; background: linear-gradient(to right, var(--red), rgba(47,138,118,0.2));
+      z-index: 0;
+    }
+    @media (max-width: 760px) {
+      .tp-track { grid-template-columns: 1fr; gap: 24px; }
+      .tp-track::before { display: none; }
+    }
+    .tp-phase {
+      background: var(--white);
+      border: 1.5px solid #E8E8E8;
+      border-radius: var(--radius);
+      padding: 36px 22px 24px;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .tp-phase-live { border-color: var(--red); box-shadow: 0 8px 32px rgba(47,138,118,0.1); }
+    .tp-dot {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--black); color: var(--white);
+      font-size: 1.05rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--black);
+    }
+    .tp-phase-live .tp-dot { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+    .tp-phase h4 { font-size: 0.98rem; font-weight: 800; margin-bottom: 10px; }
+    .tp-phase p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+    .tp-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--red);
+      background: rgba(47,138,118,0.07); padding: 5px 12px; border-radius: 100px;
+    }
+  
+    /* ─── OPS REAL IMAGES ──────────────────────────────────────── */
+    .ops-real-img {
+      height: 220px; overflow: hidden; border-radius: 12px;
+    }
+    .ops-real-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.45s ease;
+    }
+    .ops-real-img:hover img { transform: scale(1.04); }
+
+    /* ─── PHOTO MASONRY GALLERY ────────────────────────────────── */
+    .photo-masonry {
+      columns: 2;
+      column-gap: 10px;
+      margin-top: 48px;
+    }
+    .photo-masonry .pgm-item {
+      break-inside: avoid;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: block;
+    }
+    .photo-masonry .pgm-item img {
+      width: 100%; height: auto; display: block;
+      border-radius: 12px;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .photo-masonry .pgm-item:hover img {
+      opacity: 0.9; transform: scale(1.012);
+    }
+    @media (max-width: 600px) { .photo-masonry { columns: 1; } }
+
+    /* ─── FULL-BLEED PHOTO DIVIDERS ─────────────────────────────── */
+    .photo-divider {
+      width: 100%; overflow: hidden; line-height: 0;
+      max-height: 480px;
+      position: relative;
+    }
+    .photo-divider img {
+      width: 100%; height: 480px; object-fit: cover; display: block;
+    }
+    .photo-divider.tall img { height: 560px; }
+
+    /* ─── CONTEXTUAL IMAGE PAIR (2-col in content sections) ────── */
+    .ctx-img-pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+      margin: 40px 0;
+    }
+    .ctx-img-pair .ctx-img {
+      border-radius: 12px; overflow: hidden;
+    }
+    .ctx-img-pair .ctx-img img {
+      width: 100%; height: 280px; object-fit: cover; display: block;
+      transition: transform 0.4s ease;
+    }
+    .ctx-img-pair .ctx-img:hover img { transform: scale(1.03); }
+    .ctx-img-single {
+      border-radius: 12px; overflow: hidden; margin: 36px 0;
+    }
+    .ctx-img-single img {
+      width: 100%; height: auto; max-height: 340px;
+      object-fit: cover; display: block;
+    }
+    @media (max-width: 600px) {
+      .ctx-img-pair { grid-template-columns: 1fr; }
+      .photo-divider img, .photo-divider.tall img { height: 260px; }
+    }
+
+    /* ─── WHY US REAL BACKGROUND ────────────────────────────────── */
+    .why-bg-real {
+      position: absolute; inset: 0; z-index: 0;
+      overflow: hidden;
+    }
+    .why-bg-real img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      opacity: 0.18;
+      filter: grayscale(30%);
+    }
+
+    
+    /* ─── VIDEO SAMPLE CARDS ────────────────────────────────────── */
+    .video-samples-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      margin-top: 40px;
+    }
+    .vid-card {
+      border-radius: 14px; overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(56,53,47,0.09);
+      text-decoration: none; display: block;
+      box-shadow: 0 3px 16px rgba(56,53,47,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .vid-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(47,138,118,0.15); border-color: rgba(47,138,118,0.35); }
+    .vid-card-thumb {
+      position: relative; overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .vid-card-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.4s ease; filter: brightness(0.88);
+    }
+    .vid-card:hover .vid-card-thumb img { transform: scale(1.04); filter: brightness(0.75); }
+    .vid-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--red); padding-left: 4px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .vid-card:hover .vid-play { transform: translate(-50%,-50%) scale(1.1); background: var(--red); color: #fff; }
+    .vid-card-info {
+      padding: 16px 20px;
+    }
+    .vid-card-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 4px;
+    }
+    .vid-card-title {
+      font-size: 0.95rem; font-weight: 700; color: var(--charcoal); line-height: 1.3;
+    }
+    @media (max-width: 600px) { .video-samples-grid { grid-template-columns: 1fr; } }
+
+    /* ─── AWARD BLOCK ────────────────────────────────────────────── */
+    .award-block {
+      display: flex; align-items: center; gap: 36px;
+      background: linear-gradient(135deg, #0d0d1a 0%, #12102a 100%);
+      border-radius: 20px; padding: 40px 48px;
+      margin: 48px 0; overflow: hidden; position: relative;
+    }
+    .award-block::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(139,92,246,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .award-img-wrap { flex-shrink: 0; }
+    .award-img-wrap img { width: 160px; height: auto; display: block; }
+    .award-text { position: relative; z-index: 1; }
+    .award-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(139,92,246,0.9); margin-bottom: 10px;
+    }
+    .award-title {
+      font-size: 1.4rem; font-weight: 800; color: var(--white);
+      line-height: 1.25; margin-bottom: 12px;
+    }
+    .award-title em { color: rgba(200,180,255,0.85); font-style: normal; }
+    .award-sub {
+      font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 540px;
+    }
+    .award-sub strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+    @media (max-width: 640px) {
+      .award-block { flex-direction: column; padding: 28px 24px; gap: 24px; text-align: center; }
+      .award-img-wrap img { width: 120px; margin: 0 auto; }
+    }
+
+    
+    /* ══════ VILLAGE COMPONENTS (light) ══════ */
+
+    /* TikTok Strategy block */
+    .tiktok-block { margin-top: 40px; background: linear-gradient(135deg, #ffffff 0%, var(--sand) 100%);
+      border-radius: var(--radius); padding: 44px 40px; border: 1px solid rgba(56,53,47,0.08);
+      box-shadow: var(--shadow); }
+    .tiktok-head { text-align: center; margin-bottom: 34px; }
+    .tiktok-head h3 { font-size: 1.5rem; font-weight: 800; color: var(--charcoal); margin: 12px 0 10px; }
+    .tiktok-head p { font-size: 0.9rem; color: var(--muted); max-width: 620px; margin: 0 auto; line-height: 1.65; }
+    .tiktok-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    @media (max-width: 820px) { .tiktok-pillars { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 460px) { .tiktok-pillars { grid-template-columns: 1fr; } }
+    .tiktok-pillar { background: #ffffff; border: 1px solid rgba(56,53,47,0.09); border-radius: 14px;
+      padding: 22px 20px; box-shadow: 0 2px 10px rgba(56,53,47,0.05); transition: transform .25s, box-shadow .25s; }
+    .tiktok-pillar:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(47,138,118,0.12); }
+    .ttp-ico { font-size: 1.5rem; margin-bottom: 10px; }
+    .tiktok-pillar h4 { font-size: 0.95rem; font-weight: 800; color: var(--teal); margin-bottom: 8px; }
+    .tiktok-pillar p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .tiktok-plan { background: #ffffff; border: 1px solid rgba(56,53,47,0.08); border-radius: 14px; padding: 26px 28px; }
+    .tiktok-plan-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 18px; }
+    .tiktok-plan-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px 28px; }
+    @media (max-width: 760px) { .tiktok-plan-grid { grid-template-columns: 1fr; } }
+    .ttpl-item { display: flex; flex-direction: column; gap: 4px; padding-left: 18px; position: relative; }
+    .ttpl-item::before { content: '▸'; position: absolute; left: 0; top: 1px; color: var(--gold); font-weight: 700; }
+    .ttpl-item strong { font-size: 0.85rem; color: var(--charcoal); font-weight: 700; }
+    .ttpl-item span { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+
+    /* References block */
+    .refs-block { margin-top: 56px; }
+    .refs-shared-head { margin: 48px 0 28px; padding-top: 32px; border-top: 1px dashed rgba(56,53,47,0.18); text-align: center; }
+    .refs-shared-tag { display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal); background: rgba(47,138,118,0.1); padding: 5px 14px; border-radius: 6px; }
+    .refs-shared-sub { font-size: 0.86rem; color: var(--muted); max-width: 600px; margin: 12px auto 0; line-height: 1.6; }
+    .refs-cat { margin-bottom: 32px; }
+    .refs-cat-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(56,53,47,0.1); }
+    .refs-cat-head h4 { font-size: 1.02rem; font-weight: 800; color: var(--charcoal); }
+    .refs-pillar { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--rust); background: rgba(162,84,44,0.1); padding: 3px 9px; border-radius: 5px; flex-shrink: 0; }
+    .refs-count { font-size: 0.72rem; color: var(--muted); font-weight: 600; margin-left: auto; }
+    .refs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    @media (max-width: 900px) { .refs-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .refs-grid { grid-template-columns: 1fr; } }
+    .ref-card { display: flex; flex-direction: column; gap: 8px; background: #ffffff;
+      border: 1px solid rgba(56,53,47,0.1); border-radius: 12px; padding: 16px 16px 14px; text-decoration: none;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; box-shadow: 0 2px 8px rgba(56,53,47,0.04); }
+    .ref-card:hover { transform: translateY(-4px); border-color: rgba(47,138,118,0.5); box-shadow: 0 10px 26px rgba(47,138,118,0.14); }
+    .ref-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .ref-handle { font-size: 0.85rem; font-weight: 700; color: var(--charcoal); }
+    .ref-play { font-size: 0.9rem; color: var(--teal); flex-shrink: 0; }
+    .ref-type { display: inline-block; align-self: flex-start; font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+    .ref-type.polished { background: rgba(224,162,46,0.16); color: #A87A18; }
+    .ref-type.ugc { background: rgba(47,138,118,0.14); color: var(--teal); }
+    .ref-type.mixed { background: rgba(162,84,44,0.12); color: var(--rust); }
+    .ref-note { font-size: 0.74rem; color: var(--muted); line-height: 1.45; }
+
+    /* Village season-highlight metrics */
+    .vil-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 8px 0 22px; }
+    @media (max-width: 640px) { .vil-metrics { grid-template-columns: 1fr 1fr; } }
+    .vil-metric { background: #ffffff; border: 1px solid rgba(56,53,47,0.08); border-radius: 14px;
+      padding: 22px 16px; text-align: center; box-shadow: 0 2px 10px rgba(56,53,47,0.05); }
+    .vil-metric-num { font-size: 1.7rem; font-weight: 900; color: var(--teal); line-height: 1; }
+    .vil-metric-label { font-size: 0.76rem; color: var(--muted); font-weight: 600; margin-top: 8px; }
+
+    /* Village opportunity list */
+    .vil-opp-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .vil-opp-list li { position: relative; padding-left: 26px; font-size: 0.86rem; color: var(--text); line-height: 1.55; }
+    .vil-opp-list li::before { content: '✦'; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; }
+
+    /* Tech approach wrapper */
+    .tech-approach { background: var(--sand); border: 1px solid rgba(56,53,47,0.08); border-radius: var(--radius);
+      padding: 40px 40px 44px; box-shadow: var(--shadow); }
+    .tech-approach > h3 { color: var(--charcoal); }
+
+    /* chart-block-note (opportunity panel) */
+    .chart-block-note { background: linear-gradient(135deg, rgba(47,138,118,0.06), rgba(224,162,46,0.06));
+      border: 1px solid rgba(47,138,118,0.14) !important; }
+
+    /* Team disclaimer */
+    .team-disclaimer { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(56,53,47,0.14);
+      font-size: 0.75rem; color: var(--muted); line-height: 1.6; font-style: italic; text-align: center; }
+
+    /* account-single */
+    .account-split.account-single { grid-template-columns: 1fr; max-width: 620px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ──────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-brand">Graphite Studio <span>×</span> Liwa</div>
+  <ul class="nav-links">
+    <li><a href="#journey">Our Journey</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#operations">Operations</a></li>
+    <li><a href="#landscape">Landscape</a></li>
+    <li><a href="#recommendations">Strategy</a></li>
+    <li><a href="#targets">Targets</a></li>
+    <li><a href="#proposal">Proposal</a></li>
+    <li><a href="#content-vision">Content</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-eyebrow">Graphite Studio · Liwa Village Proposal 2026–2027</div>
+  <h1 class="hero-title">
+    We Know Liwa<br /><em>by Heart.</em>
+  </h1>
+  <p class="hero-sub">
+    The heart of the festival — where families gather, heritage lives, and
+    the desert becomes a home. We've told the Village's story from the inside,
+    and we're ready to tell it bigger.
+  </p>
+  <div class="hero-badges">
+    <div class="hero-badge"><span class="dot"></span> 3 Years of Media Coverage</div>
+    <div class="hero-badge"><span class="dot pink"></span> 2 Years of Social Media Management</div>
+    <div class="hero-badge"><span class="dot blue"></span> 15 On-Ground Team Members</div>
+    <div class="hero-badge"><span class="dot"></span> 23 Days · Daily Delivery</div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ─── OUR JOURNEY ──────────────────────────────────────────────── -->
+<section id="journey" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">01 · Journey</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">Our Story with Liwa</span></div>
+    <h2 class="section-title fade-up fade-up-d1">Three Years in the Making</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      From our first camera in the dunes to managing one of the UAE's most iconic
+      festivals across every platform — this is a relationship built on trust,
+      performance, and a genuine love for Liwa.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="timeline">
+      <!-- Year 1 -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">Season 2023 – 2024</div>
+          <h3>Media Coverage Begins</h3>
+          <p>Graphite Studio takes on full media coverage for Liwa International Festival — filmmakers, drone operators, video editors, and logistics team deployed for the entire 23-day run. The foundation of a long-term partnership is set.</p>
+          <div class="tl-pills">
+            <span class="tl-pill pill-blue">Media Coverage · Year 1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Year 2 -->
+      <div class="tl-item fade-up fade-up-d1">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">Season 2024 – 2025</div>
+          <h3>Social Media Management Added — Two Accounts Launched</h3>
+          <p>The mandate expands. Social media management is added to the scope, with two dedicated accounts running simultaneously: <strong>@LiwaFest</strong> and <strong>@LiwaVillage</strong>. The dual-account strategy proves highly effective — Liwa Village's distinct identity resonates deeply with audiences.</p>
+          <div class="tl-pills">
+            <span class="tl-pill pill-blue">Media Coverage · Year 2</span>
+            <span class="tl-pill pill-pink">@LiwaFest</span>
+            <span class="tl-pill pill-gold">@LiwaVillage</span>
+            <span class="tl-pill pill-gray">Social Media · Year 1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Year 3 -->
+      <div class="tl-item fade-up fade-up-d2">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">Season 2025 – 2026</div>
+          <h3>Consolidated to a Single Account</h3>
+          <p>The decision is made to merge both identities into a single festival account. While the overall content quality remains strong, the unique voice and dedicated audience of Liwa Village is lost — a learning that shapes our strategy going forward.</p>
+          <div class="tl-pills">
+            <span class="tl-pill pill-blue">Media Coverage · Year 3</span>
+            <span class="tl-pill pill-pink">@LiwaFest (Single Account)</span>
+            <span class="tl-pill pill-gray">Social Media · Year 2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Year 4 — Proposal -->
+      <div class="tl-item fade-up fade-up-d3">
+        <div class="tl-dot active"></div>
+        <div class="tl-card" style="border-color: var(--red); box-shadow: 0 8px 40px rgba(47,138,118,0.14);">
+          <div class="tl-year" style="color: var(--red);">Season 2026 – 2027 · Proposal</div>
+          <h3>Bigger. Bolder. Two Accounts Again.</h3>
+          <p>We return with our most ambitious proposal yet — re-establishing the dual-account strategy, expanding coverage to new locations and historical forts, launching new content formats (podcasts, interviews, heritage series), and bringing the full force of our team to the largest Liwa to date.</p>
+          <div class="tl-pills">
+            <span class="tl-pill pill-blue">Media Coverage · Year 4</span>
+            <span class="tl-pill pill-pink">@LiwaFest</span>
+            <span class="tl-pill pill-gold">@LiwaVillage · Reactivated</span>
+            <span class="tl-pill pill-gray">Social Media · Year 3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── ACHIEVEMENTS ─────────────────────────────────────────────── -->
+<section id="achievements" class="section section-alt">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">02 · Achievements</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">By the Numbers</span></div>
+    <h2 class="section-title fade-up fade-up-d1">A Dedicated Account.<br />Real Results.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      In its dedicated season, @LiwaVillage built a real community around the Village's family and heritage story. The figures below are drawn directly from that season's reporting — the proof behind bringing a dedicated Village account back for 2026–27.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <!-- ── HERO BANNER: @LiwaVillage Results ── -->
+    <div class="totals-banner fade-up">
+      <div class="totals-banner-label">@LiwaVillage · 2024–25 Season Results</div>
+      <div class="totals-grid">
+        <div class="total-stat">
+          <div class="total-num">21M<span class="total-plus">+</span></div>
+          <div class="total-label">Impressions</div>
+        </div>
+        <div class="total-stat">
+          <div class="total-num">29.6K<span class="total-plus"></span></div>
+          <div class="total-label">Followers</div>
+        </div>
+        <div class="total-stat">
+          <div class="total-num">670<span class="total-plus">+</span></div>
+          <div class="total-label">Posts Published</div>
+        </div>
+        <div class="total-stat">
+          <div class="total-num">85.5K<span class="total-plus">+</span></div>
+          <div class="total-label">Engagements</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── VILLAGE PERFORMANCE HIGHLIGHTS ── -->
+    <div class="compare-wrap fade-up" style="padding:32px 28px;">
+      <div style="text-align:center; margin-bottom:24px;">
+        <div class="compare-season" style="font-size:0.95rem;">@LiwaVillage · Season Highlights</div>
+        <div class="compare-accts">Dedicated account, 2024–25</div>
+      </div>
+      <div class="vil-metrics">
+        <div class="vil-metric"><div class="vil-metric-num">3.9M</div><div class="vil-metric-label">Instagram Reach</div></div>
+        <div class="vil-metric"><div class="vil-metric-num">15M</div><div class="vil-metric-label">TikTok Views</div></div>
+        <div class="vil-metric"><div class="vil-metric-num">95.2K</div><div class="vil-metric-label">Profile Visits</div></div>
+        <div class="vil-metric"><div class="vil-metric-num">+1.5K</div><div class="vil-metric-label">Tags &amp; Mentions</div></div>
+      </div>
+      <div class="compare-note">
+        <strong>Its own voice worked.</strong> As a dedicated account, @LiwaVillage built a distinct, engaged community around family, heritage, and village life — proof that the Village's story deserves a channel of its own.
+      </div>
+    </div>
+
+    <!-- ── TAKEAWAY / BRIDGE ── -->
+    <div class="cap-takeaway fade-up">
+      <div class="cap-takeaway-icon">🏘️</div>
+      <div>
+        <h4>A Community Built From Scratch</h4>
+        <p>In a single dedicated season, @LiwaVillage grew a loyal audience of nearly 30K followers and drove real engagement around the Village's family, heritage, and community story. For 2026–27, we're proposing to bring that dedicated voice back — bigger, and built on what we've learned. (@LiwaVillage runs alongside a coordinated @LiwaFest account, proposed separately.)</p>
+      </div>
+    </div>
+
+    <!-- ── PLATFORM BREAKDOWN ── -->
+    <div class="infographic-section fade-up">
+      <div class="infographic-title">Where the Village Audience Lives</div>
+      <div class="chart-grid">
+        <div class="chart-block">
+          <h4>@LiwaVillage · 2024–25</h4>
+          <p class="chart-sub">Dedicated Village account</p>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <div class="bar-meta"><span class="bar-name">TikTok</span><span class="bar-value">15M</span></div>
+              <div class="bar-track"><div class="bar-fill red" data-w="100"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-meta"><span class="bar-name">Instagram Reach</span><span class="bar-value">3.9M</span></div>
+              <div class="bar-track"><div class="bar-fill sema" data-w="26"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-meta"><span class="bar-name">Impressions</span><span class="bar-value">21M</span></div>
+              <div class="bar-track"><div class="bar-fill argoub" data-w="55"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-block chart-block-note">
+          <h4>The Opportunity for 2026–27</h4>
+          <p class="chart-sub" style="margin-bottom:16px;">Building on a proven base</p>
+          <ul class="vil-opp-list">
+            <li>Reactivate a dedicated account with an established 29.6K following</li>
+            <li>Scale TikTok — already the Village's top channel at 15M views</li>
+            <li>Deepen the family &amp; heritage community that responds best here</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INFOGRAPHIC: AUDIENCE INSIGHTS ── -->
+    <div class="infographic-section fade-up">
+      <div class="infographic-title">Audience Insights</div>
+      <div class="audience-grid">
+        <div class="ring-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 100 100" width="110" height="110">
+              <circle class="ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="ring-val" cx="50" cy="50" r="45" stroke="#2F8A76" data-pct="63" style="stroke-dashoffset:283"/>
+            </svg>
+            <div class="ring-text"><span class="ring-pct">63%</span></div>
+          </div>
+          <h4>UAE-Based Audience</h4>
+          <p>A strong local following — families and communities who see the Village as a home-grown destination</p>
+        </div>
+        <div class="ring-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 100 100" width="110" height="110">
+              <circle class="ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="ring-val" cx="50" cy="50" r="45" stroke="#A2542C" data-pct="100" style="stroke-dashoffset:283"/>
+            </svg>
+            <div class="ring-text"><span class="ring-pct">270K+</span></div>
+          </div>
+          <h4>Village Visitors in 2026</h4>
+          <p>Significant on-ground growth — a large, engaged real-world audience to convert and retain online</p>
+        </div>
+        <div class="ring-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 100 100" width="110" height="110">
+              <circle class="ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="ring-val" cx="50" cy="50" r="45" stroke="#E0A22E" data-pct="100" style="stroke-dashoffset:283"/>
+            </svg>
+            <div class="ring-text"><span class="ring-pct">15M</span></div>
+          </div>
+          <h4>TikTok Views</h4>
+          <p>The Village's strongest channel — where family and heritage content travels furthest</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forward audience segmentation -->
+    <div class="seg-block fade-up">
+      <div class="seg-head">
+        <span class="tag">Who We're Targeting in 2026–27</span>
+        <h3>From Who We Reached to Who We're Going After</h3>
+        <p>The insights above describe today's audience. The plan below maps each priority segment for @LiwaVillage to how we reach it.</p>
+      </div>
+      <div class="seg-cols">
+        <div class="seg-col">
+          <div class="seg-col-label">Primary Segments</div>
+          <ul class="seg-list2">
+            <li>
+              <div class="seg-row-top"><strong>Emirati Families</strong></div>
+              <div class="seg-desc">The Village's heart — families seeking a cultural, family-friendly day out</div>
+              <div class="seg-how">Arabic-first heritage &amp; family content, led by an Emirati native writer</div>
+            </li>
+            <li>
+              <div class="seg-row-top"><strong>Emirati Youth &amp; Groups</strong></div>
+              <div class="seg-desc">Young Emiratis and friend groups drawn to gaming, dining, and the social scene</div>
+              <div class="seg-how">Trend-led content around Wanasa, Adrenaline &amp; Tahadi, and shareable social moments</div>
+            </li>
+            <li>
+              <div class="seg-row-top"><strong>UAE Resident Expats</strong></div>
+              <div class="seg-desc">In-market families looking for an authentic local winter experience</div>
+              <div class="seg-how">Bilingual experiential content and dining, retail &amp; souk highlights</div>
+            </li>
+            <li>
+              <div class="seg-row-top"><strong>Culture &amp; Heritage Seekers</strong></div>
+              <div class="seg-desc">Visitors drawn to Emirati heritage, craft, and authentic experiences</div>
+              <div class="seg-how">Heritage storytelling, artisan showcases, and "story of the Village" series</div>
+            </li>
+          </ul>
+        </div>
+        <div class="seg-col">
+          <div class="seg-col-label">Secondary Segments</div>
+          <ul class="seg-list2">
+            <li>
+              <div class="seg-row-top"><strong>GCC / Khaleeji Visitors</strong></div>
+              <div class="seg-desc">Regional families visiting during the winter season</div>
+              <div class="seg-how">Region-targeted family content and weekend-trip inspiration</div>
+            </li>
+            <li>
+              <div class="seg-row-top"><strong>Lifestyle &amp; Dining Audiences</strong></div>
+              <div class="seg-desc">Food, retail, and experience-driven visitors</div>
+              <div class="seg-how">Aesthetic dining, souk, and lifestyle reels with creator collaborations</div>
+            </li>
+            <li>
+              <div class="seg-row-top"><strong>International Tourists</strong></div>
+              <div class="seg-desc">Visitors already travelling to the UAE seeking authentic culture</div>
+              <div class="seg-how">English-first, visually-led heritage and experience content</div>
+            </li>
+            <li>
+              <div class="seg-row-top"><strong>Community &amp; Sustainability Advocates</strong></div>
+              <div class="seg-desc">Audiences who value the Village's community role and clean-energy story</div>
+              <div class="seg-how">Content on the Village's sustainability, local partnerships, and community impact</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Target markets strip -->
+      <div class="seg-markets-strip fade-up">
+        <div class="seg-mk-block">
+          <span class="seg-mk-label">Primary Markets</span>
+          <span class="seg-mk-list">UAE</span>
+        </div>
+        <div class="seg-mk-block">
+          <span class="seg-mk-label dark">Secondary Markets</span>
+          <span class="seg-mk-list">Saudi Arabia · Kuwait · Qatar · Bahrain · Oman</span>
+        </div>
+        <p class="seg-mk-note">The Village's core audience is local UAE families, with the wider GCC as its natural regional growth tier — reached through Arabic-first and bilingual family content that keeps the experience authentic close to home while remaining accessible to Khaleeji visitors.</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="container" style="padding-bottom: 0;">
+    <div class="award-block fade-up">
+      <div class="award-img-wrap">
+        <img src="web_assets/award_meea.jpg" alt="Middle East Event Awards 2026 — Shortlisted" loading="lazy" />
+      </div>
+      <div class="award-text">
+        <div class="award-label">Middle East Event Awards 2026</div>
+        <div class="award-title">Shortlisted · <em>Best Event Photography &amp; Videography</em></div>
+        <p class="award-sub">
+          This recognition reflects the collective effort behind Liwa International Festival's visual identity.
+          We are proud to have contributed to a production that earned international recognition — and deeply grateful to
+          <strong>DCT Abu Dhabi</strong> for their trust, vision, and continued partnership, and to
+          <strong>LINKVIVA</strong> for their exceptional event direction and collaboration throughout every season.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-divider">
+  <img src="web_assets/v_div_heritage.jpg" alt="Emirati musician playing the rababa in a heritage setting" loading="lazy" />
+</div>
+
+<!-- ─── ON-GROUND OPERATIONS ─────────────────────────────────────── -->
+<section id="operations" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">03 · Operations</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">The Machine Behind the Magic</span></div>
+    <h2 class="section-title fade-up fade-up-d1">On-Ground Excellence,<br />Every Single Day</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      Managing Liwa's media coverage is one of the most logistically complex operations in UAE festival production. We've built the infrastructure to handle it seamlessly — for three years running.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="ops-grid">
+      <div class="fade-up">
+        <div class="days-badge">
+          <strong>23</strong> consecutive days · Daily content delivery
+        </div>
+        <h3 class="ops-content" style="font-size:1.3rem; font-weight:700; margin-bottom:16px;">The Daily Workflow</h3>
+        <p style="font-size:0.9rem; color:var(--muted); line-height:1.7; margin-bottom:20px;">
+          From the moment the festival opens to the moment it closes, our team is on the ground — capturing, editing, reviewing, and publishing. Not the next day. Not the next week. <strong>The same day.</strong> Our delivery model is built on two commitments: <strong>real-time coverage</strong> as moments happen, and <strong>same-day delivery</strong> of edited content — every day of the festival.
+        </p>
+        <div class="workflow-steps">
+          <div class="wf-step fade-up fade-up-d1">
+            <div class="wf-num">1</div>
+            <div class="wf-step-text">
+              <h4>Morning Briefing & Schedule Review</h4>
+              <p>Coordinate with event directors and DCT leads on the day's activities, key moments to capture, and any last-minute changes across all festival zones.</p>
+            </div>
+          </div>
+          <div class="wf-step fade-up fade-up-d2">
+            <div class="wf-num">2</div>
+            <div class="wf-step-text">
+              <h4>Full-Day Multi-Zone Coverage</h4>
+              <p>Filmmakers, drone operators, and photographers deployed across the Village simultaneously — the Souk, family zones, dining, heritage areas, and live performances.</p>
+            </div>
+          </div>
+          <div class="wf-step fade-up fade-up-d3">
+            <div class="wf-num">3</div>
+            <div class="wf-step-text">
+              <h4>On-Site Editing & Same-Day Delivery</h4>
+              <p>Editors work in real-time as footage comes in. Reels and stories are cut, colour-graded, and ready for review before the day ends — not tomorrow.</p>
+            </div>
+          </div>
+          <div class="wf-step fade-up fade-up-d4">
+            <div class="wf-num">4</div>
+            <div class="wf-step-text">
+              <h4>Feedback, Revisions & Publishing</h4>
+              <p>Our office team handles the feedback loop, coordinates rounds of edits, and ensures everything goes live with flawless timing and captions — stories, reels, posts, all platforms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-up fade-up-d2">
+        <div class="ops-img-grid">
+          <div class="ops-real-img">
+            <img src="web_assets/bts_a_planning.jpg" alt="Graphite Studio team briefing on location at Liwa Festival" loading="lazy" />
+          </div>
+          <div class="ops-real-img">
+            <img src="web_assets/bts_b_field.jpg" alt="Graphite Studio team reviewing footage in the desert at night" loading="lazy" />
+          </div>
+        </div>
+        <div class="ops-visual">
+          <h3>The On-Ground Team · 15 Members</h3>
+          <div class="team-row">
+            <div class="team-icon">🎯</div>
+            <div class="team-row-info">
+              <h4>Director</h4>
+              <p>Creative direction &amp; on-ground lead</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">📋</div>
+            <div class="team-row-info">
+              <h4>Project Manager</h4>
+              <p>Operations, scheduling &amp; client liaison</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">🗂️</div>
+            <div class="team-row-info">
+              <h4>Project Coordinators</h4>
+              <p>On-ground logistics &amp; team coordination</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">🎬</div>
+            <div class="team-row-info">
+              <h4>Filmmakers &amp; Camera Operators</h4>
+              <p>Multi-zone simultaneous coverage</p>
+            </div>
+            <div class="team-count">3</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">📷</div>
+            <div class="team-row-info">
+              <h4>Photographers</h4>
+              <p>Village zone &amp; family coverage</p>
+            </div>
+            <div class="team-count">2</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">🚁</div>
+            <div class="team-row-info">
+              <h4>Drone Operator</h4>
+              <p>Aerial coverage across all zones</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">💾</div>
+            <div class="team-row-info">
+              <h4>DIT</h4>
+              <p>Digital Imaging Technician — data management &amp; asset flow</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">🎞️</div>
+            <div class="team-row-info">
+              <h4>Video Editors</h4>
+              <p>On-site, real-time editing suite</p>
+            </div>
+            <div class="team-count">2</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">🖼️</div>
+            <div class="team-row-info">
+              <h4>Photo Editor / Retoucher</h4>
+              <p>Same-day photo processing &amp; delivery</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">📲</div>
+            <div class="team-row-info">
+              <h4>Content Creators / Mobile Videography</h4>
+              <p>Stories, real-time &amp; vertical content</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+          <div class="team-row">
+            <div class="team-icon">🚗</div>
+            <div class="team-row-info">
+              <h4>Drivers &amp; Logistics</h4>
+              <p>Equipment &amp; team mobility across the Village</p>
+            </div>
+            <div class="team-count">1</div>
+          </div>
+        </div>
+        <p class="team-disclaimer">This is the Village's dedicated on-ground team. Five roles — Director, Project Manager, Drone Operator, DIT, and Photo Editor / Retoucher — are shared with the Festival team across both accounts.</p>
+      </div>
+    </div>
+
+    <!-- How we capture key moments -->
+    <div class="capture-block fade-up">
+      <h3>How We Capture What Matters</h3>
+      <p class="capture-intro">Across 23 days and every zone, our coverage is built so the moments that matter are never missed — planned in advance, captured live, and turned around fast.</p>
+      <div class="capture-grid">
+        <div class="capture-item">
+          <div class="capture-ico">📍</div>
+          <h4>Key Moments</h4>
+          <p>Daily shot lists built with DCT leads around scheduled highlights — live performances, zone openings, and family activities — so nothing is left to chance.</p>
+        </div>
+        <div class="capture-item">
+          <div class="capture-ico">🤝</div>
+          <h4>VIP &amp; Stakeholder Visits</h4>
+          <p>Dedicated, protocol-aware coverage for official visits, dignitaries, and high-profile appearances — captured with the context and quality they require.</p>
+        </div>
+        <div class="capture-item">
+          <div class="capture-ico">🏛️</div>
+          <h4>Heritage &amp; Craft</h4>
+          <p>Coverage of the Village's cultural and heritage activations — artisans, craft, and traditional experiences, told in an authentic Emirati voice.</p>
+        </div>
+        <div class="capture-item">
+          <div class="capture-ico">🌅</div>
+          <h4>Beyond the Peak Hours</h4>
+          <p>We shoot the Village before it fills and after it quiets — the calm setup, golden-hour Souk, and late-evening warmth that crowds never see.</p>
+        </div>
+        <div class="capture-item">
+          <div class="capture-ico">🎪</div>
+          <h4>Activations &amp; Zones</h4>
+          <p>Dedicated coverage of sponsor and partner activations across Wanasa, Adrenaline, Tahadi and the Souk — capturing both the experience and the brand visibility.</p>
+        </div>
+        <div class="capture-item">
+          <div class="capture-ico">✨</div>
+          <h4>Experiences</h4>
+          <p>The visitor's-eye view — rides, dining, gaming, and family zones — the experiential content that turns interest into a family visit.</p>
+        </div>
+        <div class="capture-item">
+          <div class="capture-ico">⚡</div>
+          <h4>The Unscripted</h4>
+          <p>Roaming coverage for the spontaneous moments — crowd reactions, candid joy, the unplanned scenes that often become the most shareable content.</p>
+        </div>
+      </div>
+
+      <!-- Technical Approach block (from Technical Approach.docx) -->
+      <div class="tech-approach fade-up" style="margin-top:48px;">
+        <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:6px;">Technical Approach</h3>
+        <p style="font-size:0.85rem; color:var(--muted); max-width:700px; margin-bottom:28px; line-height:1.7;">Our production model is built around continuous presence, parallel workflows, and zone-based flexibility — allowing us to capture everything simultaneously and deliver without delay.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:16px;">
+          <div class="capture-item" style="text-align:left;">
+            <div class="capture-ico">🗺️</div>
+            <h4>Multi-Zone Deployment</h4>
+            <p>Camera teams are distributed across the Village daily — the Souk, Shams Liwa, Meydan, Wanasa, Adrenaline &amp; Tahadi zones, dining, heritage areas, and performances. A standby team remains available for urgent requests, VIP moments, and last-minute coverage needs.</p>
+          </div>
+          <div class="capture-item" style="text-align:left;">
+            <div class="capture-ico">⚙️</div>
+            <h4>Parallel Capture &amp; Edit</h4>
+            <p>Selected files are transferred to editors while camera teams continue shooting. Editing begins mid-day, not at the end of it — enabling same-day turnaround across all content formats without a bottleneck.</p>
+          </div>
+          <div class="capture-item" style="text-align:left;">
+            <div class="capture-ico">📋</div>
+            <h4>Daily Briefing &amp; Zone Assignment</h4>
+            <p>Every production day begins with a schedule review by the Director and Project Manager. Team members are briefed, zones assigned, and priorities confirmed in line with live event requirements and client direction.</p>
+          </div>
+          <div class="capture-item" style="text-align:left;">
+            <div class="capture-ico">🗄️</div>
+            <h4>Organized Asset Delivery</h4>
+            <p>All captured content is catalogued, backed up, and delivered in an organized structure — ready for client use, stakeholder access, archiving, and future reference.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OFFICE TEAM ───────────────────────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">04 · Office Team</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">The Behind-the-Scenes Force</span></div>
+    <h2 class="section-title fade-up fade-up-d1">A Full Team. Dedicated<br />to Liwa Year-Round.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      While the on-ground team captures the magic, our office team keeps the digital engine running — publishing, analysing, responding, and refining. 24 hours a day during the festival season.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="office-grid">
+      <div class="office-card fade-up fade-up-d1">
+        <div class="office-icon">📊</div>
+        <h4>Project Managers</h4>
+        <p>End-to-end oversight of content pipeline, timelines, client coordination, and delivery schedules.</p>
+      </div>
+      <div class="office-card fade-up fade-up-d2">
+        <div class="office-icon">🎨</div>
+        <h4>Graphic Designers</h4>
+        <p>Creating on-brand visuals, story templates, event graphics, and all static social assets.</p>
+      </div>
+      <div class="office-card fade-up fade-up-d3">
+        <div class="office-icon">✍️</div>
+        <h4>Content Creators</h4>
+        <p>Crafting captions, scripts, hashtag strategy, and bilingual copy for every platform and format.</p>
+      </div>
+      <div class="office-card fade-up fade-up-d1">
+        <div class="office-icon">📱</div>
+        <h4>Social Media Specialists</h4>
+        <p>Platform-native experts who understand the algorithm on Instagram, TikTok, Snapchat, YouTube and X.</p>
+      </div>
+      <div class="office-card fade-up fade-up-d2">
+        <div class="office-icon">💬</div>
+        <h4>Community Managers</h4>
+        <p>Monitoring and responding to every comment, DM, and mention in real time — in Arabic and English.</p>
+      </div>
+      <div class="office-card fade-up fade-up-d3">
+        <div class="office-icon">📈</div>
+        <h4>Performance Analysts</h4>
+        <p>Daily tracking of metrics across all platforms, feeding insights back to the content and posting strategy in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WORK SAMPLES ────────────────────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">05-1 · Work Samples</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">From Our Previous Seasons</span></div>
+    <h2 class="section-title fade-up fade-up-d1">Three Seasons.<br />The Work Speaks.</h2>
+    <p class="section-sub fade-up fade-up-d2">A selection of our best productions from three years on the ground at Liwa — recap films, heritage series, and more.</p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="video-samples-grid fade-up">
+      <a class="vid-card" href="https://drive.google.com/file/d/1ukN3ZfmqjBMTlptZOa5LmoJylRyyO8Aw/view" target="_blank" rel="noopener">
+        <div class="vid-card-thumb">
+          <img src="web_assets/thumb_village_2425.jpg" alt="Liwa Village Recap thumbnail" loading="lazy" />
+          <div class="vid-play">▶</div>
+        </div>
+        <div class="vid-card-info">
+          <div class="vid-card-label">Village Recap · 2024–2025</div>
+          <div class="vid-card-title">Liwa Village — Official Recap Film</div>
+        </div>
+      </a>
+      <a class="vid-card" href="https://drive.google.com/file/d/1bDq4c-lGMLA8kFl5qVwqmiczh-LyRLjP/view" target="_blank" rel="noopener">
+        <div class="vid-card-thumb">
+          <img src="web_assets/thumb_legends.jpg" alt="Liwa Legends thumbnail" loading="lazy" />
+          <div class="vid-play">▶</div>
+        </div>
+        <div class="vid-card-info">
+          <div class="vid-card-label">Heritage Series · Liwa</div>
+          <div class="vid-card-title">Liwa Legends</div>
+        </div>
+      </a>
+      <a class="vid-card" href="https://www.youtube.com/watch?v=DHHZwKR1C5w" target="_blank" rel="noopener">
+        <div class="vid-card-thumb">
+          <img src="web_assets/thumb_recap_2526.jpg" alt="Recap Video thumbnail" loading="lazy" />
+          <div class="vid-play">▶</div>
+        </div>
+        <div class="vid-card-info">
+          <div class="vid-card-label">Season Recap · 2025–2026</div>
+          <div class="vid-card-title">Liwa — Official Recap</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTENT GALLERY ──────────────────────────────────────────── -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">05-2 · Our Content</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">From Our Coverage</span></div>
+    <h2 class="section-title fade-up fade-up-d1">The Moments<br />We Captured.</h2>
+    <p class="section-sub fade-up fade-up-d2">A selection of our best shots from our seasons on the ground — family, heritage, dining, and the everyday life of the Village.</p>
+    <div class="divider fade-up fade-up-d3"></div>
+    <div class="photo-masonry fade-up">
+      <div class="pgm-item"><img src="web_assets/v_ctx_falconer.jpg" alt="Emirati falconer with his falcon — heritage portrait" loading="lazy" /></div>
+      <div class="pgm-item"><img src="web_assets/v_g_aerial.jpg"       alt="Aerial top-down view of Liwa Village at night"         loading="lazy" /></div>
+      <div class="pgm-item"><img src="web_assets/v_g_carousel.jpg"    alt="Child riding the carousel at Liwa Village"          loading="lazy" /></div>
+      <div class="pgm-item"><img src="web_assets/v_g_heritage.jpg"     alt="Emirati musician playing traditional instrument in warm light"   loading="lazy" /></div>
+      <div class="pgm-item"><img src="web_assets/v_g_falconry.jpg"     alt="Traditional Emirati falconry — falcon with wings spread"        loading="lazy" /></div>
+      <div class="pgm-item"><img src="web_assets/v_g_performer.jpg"      alt="Performer entertaining families at the Village at night"      loading="lazy" /></div>
+      <div class="pgm-item"><img src="web_assets/v_g_mascot.jpg"        alt="Village mascot character greeting visitors"                   loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KEY LEARNINGS ────────────────────────────────────────────── -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num" style="background:rgba(224,162,46,0.16); color:var(--gold);">06 · Learnings</span>
+      <div class="section-label-line" style="background: rgba(255,255,255,0.1);"></div>
+    </div>
+    <div class="fade-up"><span class="tag" style="background:rgba(224,162,46,0.16); color:var(--gold);">What We've Learned</span></div>
+    <h2 class="section-title fade-up fade-up-d1" style="color:var(--white);">Two Years of Insights.<br />Built Into Year Three.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      We don't just deliver — we analyse, reflect, and improve. Every season makes us sharper. Here's what our data and experience have taught us.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="learnings-grid">
+      <div class="learning-card fade-up fade-up-d1">
+        <div class="learning-tag">Content Strategy</div>
+        <div class="learning-icon">🚁</div>
+        <h4>Drone Shots & Kids Content = Viral Fuel</h4>
+        <p>Our highest-performing videos consistently featured aerial drone footage and content involving children. Single reels hit 2.6M and 1.8M views respectively — a formula we'll scale in 2026-27.</p>
+      </div>
+      <div class="learning-card fade-up fade-up-d2">
+        <div class="learning-tag">Audience Growth</div>
+        <div class="learning-icon">📅</div>
+        <h4>Posting Frequency Drives Algorithmic Growth</h4>
+        <p>5 posts per day and an average of 12 reels per week produced a 20.7% page growth in just 4 weeks, with 57.94% of engaged users being non-followers — proving the reach potential is enormous.</p>
+      </div>
+      <div class="learning-card fade-up fade-up-d3">
+        <div class="learning-tag">Engagement</div>
+        <div class="learning-icon">🎤</div>
+        <h4>Audience Testimonials Drive Shares</h4>
+        <p>Visitor feedback videos consistently outperformed polished announcements — human voices and real stories resonate and drive shares far more than branded posts.</p>
+      </div>
+      <div class="learning-card fade-up fade-up-d4">
+        <div class="learning-tag">Demographics</div>
+        <div class="learning-icon">🌍</div>
+        <h4>UAE-Heavy Audience — Expansion Opportunity</h4>
+        <p>~63% of followers are UAE-based. We know the next frontier: the wider GCC and MENA region, where cultural affinity for Liwa's heritage content is high and the audience is largely untapped.</p>
+      </div>
+      <div class="learning-card fade-up fade-up-d1">
+        <div class="learning-tag">Audience Fit</div>
+        <div class="learning-icon">👨‍👩‍👧</div>
+        <h4>Family Content Is the Village's Superpower</h4>
+        <p>The Village's audience is family-first — parents, kids, and community groups. Content built around genuine family moments consistently outperformed here, which is exactly why a dedicated, family-focused account works.</p>
+      </div>
+      <div class="learning-card fade-up fade-up-d2">
+        <div class="learning-tag">Content Strategy</div>
+        <div class="learning-icon">🎯</div>
+        <h4>Distinct Audiences Need Distinct Content</h4>
+        <p>Our seasons taught us that the Village audience responds most to warm, authentic, family-and-heritage content — a distinct voice from the Festival's high-energy feed. That insight shapes how we plan @LiwaVillage's content for 2026–27.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-divider tall">
+  <img src="web_assets/v_div_falconer.jpg" alt="Emirati falconer with falcon in flight" loading="lazy" style="height:520px; object-fit:cover; object-position:center 40%;" />
+</div>
+
+<!-- ─── COMPETITIVE LANDSCAPE ─────────────────────────────────────── -->
+<section id="landscape" class="section section-alt">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">07 · Landscape</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">Competitive Analysis</span></div>
+    <h2 class="section-title fade-up fade-up-d1">The Festivals We<br />Share the Field With</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      A snapshot of how comparable festivals and desert events position themselves across social platforms — from regional UAE peers to the global benchmarks the category looks up to.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="comp-grid fade-up">
+      <!-- Sheikh Zayed Festival -->
+      <div class="comp-card">
+        <div class="comp-card-head">
+          <h4>مهرجان الشيخ زايد<br /><span>Sheikh Zayed Festival</span></h4>
+        </div>
+        <p class="comp-note">A large multi-month cultural and entertainment festival at Al Wathba, Abu Dhabi. Known for nightly events, cultural pavilions, and family programming, with a heavily Arabic-first content approach and broad regional appeal.</p>
+        <ul class="comp-platforms">
+          <li><span class="cp-name">Instagram</span><span class="cp-val">102K</span></li>
+          <li><span class="cp-name">Facebook</span><span class="cp-val">110K</span></li>
+          <li><span class="cp-name">YouTube</span><span class="cp-val">3.84K</span></li>
+          <li><span class="cp-name">TikTok</span><span class="cp-val">27.4K</span></li>
+          <li><span class="cp-name">Snapchat</span><span class="cp-val">950</span></li>
+          <li><span class="cp-name">X</span><span class="cp-val">25.8K</span></li>
+        </ul>
+      </div>
+
+      <!-- MOTN Festival -->
+      <div class="comp-card">
+        <div class="comp-card-head">
+          <h4>MOTN Festival<br /><span>Middle of Nowhere · Abu Dhabi</span></h4>
+        </div>
+        <p class="comp-note">A music, camping, and experiential festival with a younger, community-driven audience. Strong on lineup reveals, lifestyle and crowd-energy content, and user-generated moments from attendees.</p>
+        <ul class="comp-platforms">
+          <li><span class="cp-name">Instagram</span><span class="cp-val">52.4K</span></li>
+          <li><span class="cp-name">Facebook</span><span class="cp-val">59K</span></li>
+          <li><span class="cp-name">YouTube</span><span class="cp-val">6.3K</span></li>
+          <li><span class="cp-name">TikTok</span><span class="cp-val">7.7K</span></li>
+          <li><span class="cp-name">Snapchat</span><span class="cp-val">—</span></li>
+          <li><span class="cp-name">X</span><span class="cp-val">6.96K</span></li>
+        </ul>
+      </div>
+
+      <!-- Abu Dhabi Desert Challenge -->
+      <div class="comp-card">
+        <div class="comp-card-head">
+          <h4>Abu Dhabi<br /><span>Desert Challenge</span></h4>
+        </div>
+        <p class="comp-note">An FIA/FIM world-championship cross-country rally held in the Abu Dhabi desert. Known for international motorsport credibility and athlete-driven storytelling, with social built on race action and driver profiles.</p>
+        <ul class="comp-platforms">
+          <li><span class="cp-name">Instagram</span><span class="cp-val">21.7K</span></li>
+          <li><span class="cp-name">Facebook</span><span class="cp-val">25K</span></li>
+          <li><span class="cp-name">YouTube</span><span class="cp-val">1.66K</span></li>
+          <li><span class="cp-name">TikTok</span><span class="cp-val">—</span></li>
+          <li><span class="cp-name">Snapchat</span><span class="cp-val">—</span></li>
+          <li><span class="cp-name">X</span><span class="cp-val">499</span></li>
+        </ul>
+      </div>
+
+      <!-- Global Village -->
+      <div class="comp-card">
+        <div class="comp-card-head">
+          <h4>القرية العالمية<br /><span>Global Village · Dubai</span></h4>
+        </div>
+        <p class="comp-note">One of the region's largest family-entertainment destinations. A high-volume, consistent daily content operation across pavilions, dining, and shows, with strong bilingual reach and family-oriented programming.</p>
+        <ul class="comp-platforms">
+          <li><span class="cp-name">Instagram</span><span class="cp-val">779K</span></li>
+          <li><span class="cp-name">Facebook</span><span class="cp-val">672K</span></li>
+          <li><span class="cp-name">YouTube</span><span class="cp-val">106K</span></li>
+          <li><span class="cp-name">TikTok</span><span class="cp-val">98.8K</span></li>
+          <li><span class="cp-name">Snapchat</span><span class="cp-val">16K</span></li>
+          <li><span class="cp-name">X</span><span class="cp-val">59.5K</span></li>
+        </ul>
+      </div>
+
+      <!-- Dakar Rally -->
+      <div class="comp-card comp-card-bench">
+        <div class="comp-card-head">
+          <h4>Dakar Rally<br /><span>Global Benchmark · KSA</span></h4>
+        </div>
+        <p class="comp-note">The world's most renowned off-road endurance rally. A global production benchmark: cinematic stage films, daily highlight packages, and a large international following built on extreme terrain and human-endurance narratives.</p>
+        <ul class="comp-platforms">
+          <li><span class="cp-name">Instagram</span><span class="cp-val">2.8M</span></li>
+          <li><span class="cp-name">Facebook</span><span class="cp-val">3.6M</span></li>
+          <li><span class="cp-name">YouTube</span><span class="cp-val">731K</span></li>
+          <li><span class="cp-name">TikTok</span><span class="cp-val">2.4M</span></li>
+          <li><span class="cp-name">Snapchat</span><span class="cp-val">—</span></li>
+          <li><span class="cp-name">X</span><span class="cp-val">546.1K</span></li>
+        </ul>
+      </div>
+
+      <!-- AlUla Moments -->
+      <div class="comp-card comp-card-bench">
+        <div class="comp-card-head">
+          <h4>موسم العلا<br /><span>AlUla Moments · KSA</span></h4>
+        </div>
+        <p class="comp-note">A season of cultural, music, and heritage events in AlUla, Saudi Arabia. A best-in-class desert-destination reference: cinematic visuals, celebrity and influencer activations, and content targeted at an international travel audience.</p>
+        <ul class="comp-platforms">
+          <li><span class="cp-name">Instagram</span><span class="cp-val">216K</span></li>
+          <li><span class="cp-name">Facebook</span><span class="cp-val">55K</span></li>
+          <li><span class="cp-name">YouTube</span><span class="cp-val">21.4K</span></li>
+          <li><span class="cp-name">TikTok</span><span class="cp-val">453.3K</span></li>
+          <li><span class="cp-name">Snapchat</span><span class="cp-val">—</span></li>
+          <li><span class="cp-name">X</span><span class="cp-val">104.2K</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Synthesis: what the landscape means for Liwa -->
+    <div class="land-synthesis fade-up">
+      <div class="land-synthesis-head">
+        <span class="tag">What the Landscape Tells Us</span>
+        <h3>Four Reads — and How Liwa Responds</h3>
+        <p class="land-synthesis-intro">Our read of the landscape, based on public profiles and each event's reputation in the category — and what it suggests for Liwa's 2026–27 direction.</p>
+      </div>
+      <div class="land-synthesis-grid">
+        <div class="ls-item">
+          <div class="ls-num">01</div>
+          <div>
+            <h4>The family-first players set the bar for the audience we want</h4>
+            <p>Global Village and Sheikh Zayed Festival appear to lean heavily on consistent family and lifestyle content — the kind that builds a broad, returning audience. That is exactly the audience <strong>@LiwaVillage</strong> is built to own — a dedicated home for family and heritage content.</p>
+          </div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">02</div>
+          <div>
+            <h4>Warm, consistent family storytelling is the production reference</h4>
+            <p>Global Village and Sheikh Zayed Festival set the bar for family and cultural storytelling that builds a loyal, returning audience. It's a useful reference for the warmth and consistency we aim for on <strong>@LiwaVillage</strong> — authentic, family-first, and built for repeat visits.</p>
+          </div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">03</div>
+          <div>
+            <h4>The regional giants grow through reach beyond their borders</h4>
+            <p>AlUla Moments is known for scaling reach through celebrity and influencer activations aimed at an international audience. It suggests a model @LiwaVillage could draw on to grow beyond a purely local base — reaching GCC families and culture-seeking travellers.</p>
+          </div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">04</div>
+          <div>
+            <h4>Authentic heritage content is underused across the category</h4>
+            <p>Based on public profiles, most of the field leans on polished promotion over authentic, human heritage storytelling. With an Emirati native voice and genuine access to the Village's craft, food, and community, this is a space <strong>@LiwaVillage can own</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctx-img-single fade-up">
+      <img src="web_assets/v_ctx_gokarts.jpg" alt="Go-karts arena at Liwa Village" loading="lazy" style="object-position:center 62%;" />
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ─── RECOMMENDATIONS ───────────────────────────────────────────── -->
+<section id="recommendations" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">08 · Recommendations</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">From Insight to Action</span></div>
+    <h2 class="section-title fade-up fade-up-d1">Four Objectives.<br />One Connected Strategy.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      Everything we've learned across two seasons points to four clear priorities for 2026–27 — each met by a specific, deliberate set of actions.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="rec-list fade-up">
+      <!-- Objective 1 -->
+      <div class="rec-item">
+        <div class="rec-obj">
+          <div class="rec-num">01</div>
+          <div class="rec-obj-text">
+            <h3>Grow a Loyal Local Base</h3>
+            <p>With a UAE-heavy following built in one season, the Village's biggest opportunity is deepening loyalty at home — turning the 270K+ real-world visitors into a returning online community, then extending to GCC families.</p>
+          </div>
+        </div>
+        <div class="rec-actions">
+          <div class="rec-action"><span>→</span> Always-on family and heritage content that keeps the community warm</div>
+          <div class="rec-action"><span>→</span> Arabic-first storytelling led by an Emirati native writer</div>
+          <div class="rec-action"><span>→</span> Region-targeted family content to reach GCC visitors during winter</div>
+          <div class="rec-measure">Measured by: follower growth, returning-visitor engagement, and GCC reach.</div>
+        </div>
+      </div>
+
+      <!-- Objective 2 -->
+      <div class="rec-item">
+        <div class="rec-obj">
+          <div class="rec-num">02</div>
+          <div class="rec-obj-text">
+            <h3>Own the Family Audience</h3>
+            <p>The Village is Liwa's family and community hub — but that story needs a dedicated voice to land. A focused account lets us speak directly to families, parents, and children rather than competing with the Festival's high-energy feed.</p>
+          </div>
+        </div>
+        <div class="rec-actions">
+          <div class="rec-action"><span>→</span> A dedicated, always-warm @LiwaVillage account for family &amp; heritage</div>
+          <div class="rec-action"><span>→</span> "Things to do with the family" content across the Village's zones</div>
+          <div class="rec-action"><span>→</span> Dining, Souk, and lifestyle angles that turn interest into visits</div>
+          <div class="rec-measure">Measured by: family-segment engagement and growth in returning followers.</div>
+        </div>
+      </div>
+
+      <!-- Objective 3 -->
+      <div class="rec-item">
+        <div class="rec-obj">
+          <div class="rec-num">03</div>
+          <div class="rec-obj-text">
+            <h3>Build Community, Not Just Broadcast</h3>
+            <p>Coverage has leaned on promotion over participation. The audience's own voice is the most underused asset we have — and the most powerful driver of genuine engagement.</p>
+          </div>
+        </div>
+        <div class="rec-actions">
+          <div class="rec-action"><span>→</span> A structured UGC amplification strategy and community takeovers</div>
+          <div class="rec-action"><span>→</span> Short, authentic interviews with real visitors and the local community</div>
+          <div class="rec-action"><span>→</span> Contests and interactive activations that reward participation</div>
+          <div class="rec-measure">Measured by: UGC volume, comment and DM response, and engagement rate.</div>
+        </div>
+      </div>
+
+      <!-- Objective 4 -->
+      <div class="rec-item">
+        <div class="rec-obj">
+          <div class="rec-num">04</div>
+          <div class="rec-obj-text">
+            <h3>Deepen Content &amp; Formats</h3>
+            <p>Highlight reels alone don't build a year-round following. Varied formats keep the audience engaged between editions — sustaining awareness long after the gates close.</p>
+          </div>
+        </div>
+        <div class="rec-actions">
+          <div class="rec-action"><span>→</span> A broader format mix: visitor testimonials, community interviews, heritage &amp; immersive content</div>
+          <div class="rec-action"><span>→</span> A year-round content drip — keeping the accounts alive between editions</div>
+          <div class="rec-action"><span>→</span> Longer-form storytelling and recap films that build a lasting library</div>
+          <div class="rec-measure">Measured by: format variety and audience retention between editions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connective strategy callout -->
+    <div class="rec-thread fade-up">
+      <div class="rec-thread-icon">🧵</div>
+      <p><strong>The connecting thread:</strong> @LiwaVillage carries the intimate story of Liwa — family, heritage, and community — a voice the Festival account can't replicate, with each objective feeding the next.</p>
+    </div>
+
+    <!-- B2B vs B2C -->
+    <div class="dual-aud fade-up">
+      <div class="dual-aud-head">
+        <span class="tag">Two Audiences, One Village</span>
+        <h3>Speaking to Visitors and Partners Alike</h3>
+        <p>The Village answers to two audiences: the families it wants to welcome, and the partners and stakeholders whose investment makes it possible. Each is spoken to deliberately — because each is essential to the Village's success.</p>
+      </div>
+      <div class="dual-aud-grid">
+        <div class="dual-aud-card">
+          <div class="dual-aud-tag b2c">B2C · Visitors</div>
+          <h4>Driving footfall &amp; experience</h4>
+          <p>Content that turns online attention into a family day out — the atmosphere, the moments, and the reasons to make the trip.</p>
+          <ul class="dual-aud-list">
+            <li>Reels capturing standout moments — kids' first ride, a Souk discovery</li>
+            <li>Real-time "happening now" stories from across the zones</li>
+            <li>Countdowns, zone reveals, and "what's new" teasers</li>
+            <li>Family, food, and culture creator partnerships that extend reach</li>
+            <li>Interactive content — polls, Q&amp;As, contests — that turns followers into participants</li>
+          </ul>
+          <div class="dual-aud-goal"><span>Goal</span> Awareness, family attendance, and footfall.</div>
+        </div>
+        <div class="dual-aud-card">
+          <div class="dual-aud-tag b2b">B2B · Partners &amp; Stakeholders</div>
+          <h4>Proving the Village's value</h4>
+          <p>Content and reporting that demonstrate the Village's reach and impact — the evidence that keeps sponsors invested and attracts the next ones.</p>
+          <ul class="dual-aud-list">
+            <li>Sponsor activation spotlights and branded-moment coverage</li>
+            <li>Stakeholder and VIP visit coverage</li>
+            <li>Tailored reach &amp; impact reports delivered directly to partners</li>
+            <li>Co-branded content opportunities that give partners organic visibility</li>
+          </ul>
+          <div class="dual-aud-goal"><span>Goal</span> Sponsor visibility, retention, and stakeholder confidence.</div>
+        </div>
+      </div>
+      <div class="dual-aud-balance">
+        <span class="dab-ico">⚖️</span>
+        <p><strong>Two audiences, one seamless feed:</strong> partner and sponsor moments are integrated naturally into the storytelling — adding value without ever interrupting the experience visitors come for.</p>
+      </div>
+    </div>
+
+    <!-- ── PHASED TIMELINE ── -->
+    <div class="timeline-phases fade-up">
+      <div class="tp-header">
+        <span class="tag">How It Rolls Out</span>
+        <h3>A Season in Four Phases</h3>
+        <p>From mobilization to amplification — a continuous operation built around the festival, not bolted on to it. Each phase carries its own content focus.</p>
+      </div>
+      <div class="tp-track">
+        <div class="tp-phase">
+          <div class="tp-dot">0</div>
+          <h4>Mobilization</h4>
+          <p>Strategy, content calendar, account reactivation, announcement film, and shot planning — before anyone else has started.</p>
+          <span class="tp-tag">Zero ramp-up</span>
+        </div>
+        <div class="tp-phase">
+          <div class="tp-dot">1</div>
+          <h4>Pre-Event Build-Up</h4>
+          <p>Content: teasers, countdowns, lineup and attraction reveals, and heritage build-up storytelling to grow anticipation.</p>
+          <span class="tp-tag">Hype &amp; reach</span>
+        </div>
+        <div class="tp-phase tp-phase-live">
+          <div class="tp-dot">2</div>
+          <h4>Live · The Festival</h4>
+          <p>Content: real-time stories, daily highlight reels, spokesperson-led coverage, and zone-by-zone capture — same-day delivery with 24/7 community management in Arabic &amp; English.</p>
+          <span class="tp-tag">Daily delivery</span>
+        </div>
+        <div class="tp-phase">
+          <div class="tp-dot">3</div>
+          <h4>Post-Event Amplification</h4>
+          <p>Content: recap films, best-of compilations, audience-retention posts, and the year-round drip — plus performance reporting to close the loop.</p>
+          <span class="tp-tag">Sustain &amp; report</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KPIs / TARGETS ────────────────────────────────────────────── -->
+<section id="targets" class="section section-alt">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">09 · Targets</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">What Success Looks Like</span></div>
+    <h2 class="section-title fade-up fade-up-d1">The Numbers<br />We're Aiming For.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      For 2026–27 we're committing to clear targets — set conservatively against a proven baseline. These build on what @LiwaVillage delivered in its dedicated season, so every number is grounded in results we've already achieved.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="kpi-grid fade-up">
+      <div class="kpi-card">
+        <div class="kpi-label">Reach / Impressions</div>
+        <div class="kpi-num">25M+</div>
+        <div class="kpi-context">A measured step up from the 21M+ delivered in the account's first dedicated season — achievable now that it reactivates from an established base, not zero.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Engagement</div>
+        <div class="kpi-num">100K+</div>
+        <div class="kpi-context">Building on the 85.5K+ engagements the account drove in a single season — with a warmer, more established following to grow from.</div>
+      </div>
+    </div>
+
+    <div class="kpi-extra fade-up">
+      <div class="kpi-extra-item"><span class="kpi-ico">📈</span> Follower growth beyond the 29.6K base</div>
+      <div class="kpi-extra-item"><span class="kpi-ico">🎯</span> 20% of content exceeding benchmark performance</div>
+      <div class="kpi-extra-item"><span class="kpi-ico">🔄</span> Conversions &amp; click-throughs to Village channels</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROPOSAL 2026-27 ──────────────────────────────────────────── -->
+<section id="proposal" class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">10 · Our Proposal</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag tag-blue">2026 – 2027</span></div>
+    <h2 class="section-title fade-up fade-up-d1">Bringing the Village<br />Voice Back.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      After a season folded into the Festival account, @LiwaVillage deserves its own voice again — a dedicated home for the family, heritage, and community story that 270K+ visitors come for. This is our proposal to bring it back, bigger.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="proposal-hero fade-up">
+      <h2>Liwa Village 2026–2027</h2>
+      <p>The heart of the festival deserves a channel of its own. A dedicated account, an authentic Emirati voice, and a team that already knows every corner of the Village — from the Souk to Shams Liwa.</p>
+    </div>
+
+    <!-- Account Approach -->
+    <div class="fade-up">
+      <span class="tag">Account Approach</span>
+      <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:12px;">@LiwaVillage — The Heart of the Festival</h3>
+      <p style="font-size:0.9rem; color:var(--muted); max-width:640px; line-height:1.7; margin-bottom:24px;">
+        @LiwaVillage is the intimate, community-facing account — the home for family, heritage, dining, and village life. Where the Festival account carries scale and spectacle, the Village account carries warmth and belonging, told in an authentic Emirati voice. A dedicated account is what lets that distinct story reach the families it's made for.
+      </p>
+      <div class="account-split account-single">
+        <div class="account-card">
+          <div class="account-card-head gold">What @LiwaVillage Carries</div>
+          <div class="account-card-body">
+            <ul>
+              <li><span>🏛️</span> Emirati heritage, craft, and traditional lifestyle storytelling</li>
+              <li><span>👨‍👩‍👧</span> Family-focused content: kids' activities, rides, interactive zones</li>
+              <li><span>🍽️</span> Dining, retail, and the Souk — the everyday life of the Village</li>
+              <li><span>🎪</span> The themed zones: Shams Liwa, Meydan, Wanasa, Adrenaline &amp; Tahadi</li>
+              <li><span>💚</span> Community, belonging, and the Village's sustainable, clean-energy story</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Three Pillars -->
+    <div style="margin-top: 56px;">
+      <div class="fade-up"><span class="tag">Our Scope of Service</span></div>
+      <div class="proposal-pillars fade-up fade-up-d1">
+        <div class="pillar">
+          <div class="pillar-head blue-head">
+            <span class="pillar-icon-lg">🎬</span>
+            <div>
+              <div style="font-size:0.68rem; opacity:0.7; font-weight:600; letter-spacing:0.1em; margin-bottom:4px;">STREAM 01</div>
+              Media Coverage
+            </div>
+          </div>
+          <div class="pillar-body">
+            <ul>
+              <li>Dedicated on-ground team across the full event run</li>
+              <li>Multi-zone filming: Shams Liwa, Meydan, Souk, Wanasa, Adrenaline &amp; Tahadi</li>
+              <li>Professional drone coverage across all key Village zones and activations</li>
+              <li>On-site editing for same-day and same-moment delivery</li>
+              <li>Capturing family moments, dining, retail, and crowd atmosphere</li>
+              <li>Full coordination with DCT marketing and Village area leads</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-head pink-head">
+            <span class="pillar-icon-lg">📱</span>
+            <div>
+              <div style="font-size:0.68rem; opacity:0.7; font-weight:600; letter-spacing:0.1em; margin-bottom:4px;">STREAM 02</div>
+              Social Media Management
+            </div>
+          </div>
+          <div class="pillar-body">
+            <ul>
+              <li>@LiwaVillage account management (with @LiwaFest coordinated alongside)</li>
+              <li>Monthly content calendars in Arabic &amp; English, with an Emirati native content writer</li>
+              <li>Daily publishing across Instagram, TikTok, YouTube, Snapchat, X</li>
+              <li>Stories coverage and real-time publishing throughout each event day</li>
+              <li>Dedicated community management — comments &amp; DMs, Arabic and English</li>
+              <li>Weekly &amp; monthly reports, plus a social listening &amp; sentiment analysis report</li>
+              <li>Influencer coordination and UGC amplification strategy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTENT IDEAS ─────────────────────────────────────────────── -->
+<section id="content-vision" class="section section-alt">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num">11 · Content Vision</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="fade-up"><span class="tag">Creative Direction</span></div>
+    <h2 class="section-title fade-up fade-up-d1">New Formats. New<br />Audiences. Same Heart.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      Content that goes beyond the highlight reel — stories that build a real community around Liwa, year after year.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <!-- Storytelling approach -->
+    <div class="story-block fade-up">
+      <div class="story-head">
+        <span class="tag">How We Tell the Story</span>
+        <h3>Every Post Is Part of a Bigger Story</h3>
+        <p>The Village isn't a collection of zones to document — it's a story to tell. A story of families gathering, of heritage kept alive, of a community in the desert. We treat every reel, post, and frame as a chapter in that larger narrative, built on three instincts.</p>
+      </div>
+      <div class="story-grid">
+        <div class="story-item">
+          <div class="story-num">01</div>
+          <h4>People over promotion</h4>
+          <p>We lead with the families, craftspeople, vendors, and visitors whose moments make the Village human — and shareable.</p>
+        </div>
+        <div class="story-item">
+          <div class="story-num">02</div>
+          <h4>Place as character</h4>
+          <p>The Village itself is part of the story — the Souk at golden hour, the warmth of a busy family evening, the desert beyond. We shoot it as a presence, not a backdrop.</p>
+        </div>
+        <div class="story-item">
+          <div class="story-num">03</div>
+          <h4>Moment to meaning</h4>
+          <p>We don't just capture what happened — we frame why it mattered, turning a child's first ride or a quiet heritage scene into something that resonates.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Pillars Framework -->
+    <div class="cpillars fade-up">
+      <div class="cpillars-head">
+        <span class="tag">Content Pillars</span>
+        <h3>Four Pillars That Shape Everything We Post</h3>
+        <p>Every piece of content ladders up to one of four pillars — the framework that keeps the feed varied, on-brand, and balanced.</p>
+      </div>
+      <div class="cpillars-grid">
+        <div class="cpillar">
+          <div class="cpillar-icon">🏛️</div>
+          <h4>Heritage</h4>
+          <p>Emirati craft, traditional lifestyle, and authentic cultural activations — told in a native voice, the identity that anchors the Village.</p>
+        </div>
+        <div class="cpillar">
+          <div class="cpillar-icon">🎪</div>
+          <h4>Entertainment</h4>
+          <p>Live performances, interactive attractions, and the Wanasa, Adrenaline &amp; Tahadi zones — the everyday energy that keeps families coming back.</p>
+        </div>
+        <div class="cpillar">
+          <div class="cpillar-icon">🍽️</div>
+          <h4>Experiences</h4>
+          <p>The Souk, dining, retail, rides, and family zones — the curated hub experiences that turn a visit into a full day out.</p>
+        </div>
+        <div class="cpillar">
+          <div class="cpillar-icon">🤝</div>
+          <h4>Community</h4>
+          <p>Visitor voices, family moments, and real reactions — the participation-led content that builds the Village's sense of belonging.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform-first approach -->
+    <div class="pfirst fade-up">
+      <div class="pfirst-icon">📱</div>
+      <div>
+        <h4>Video-first, TikTok-first, spokesperson-led</h4>
+        <p>Our content approach leads with short-form vertical video built for TikTok and Reels, supported by spokesperson-led storytelling that gives the festival a recognizable on-screen voice. Every format is produced bilingually in Arabic and English, and shaped for the platform it lives on rather than cross-posted flat.</p>
+      </div>
+    </div>
+
+    <!-- Per-channel format breakdown -->
+    <div class="channels fade-up">
+      <div class="channels-head">
+        <span class="tag">Platform by Platform</span>
+        <h3>The Right Format for Every Channel</h3>
+        <p>Each platform earns a tailored approach — not the same post pushed everywhere. Here's what leads on each.</p>
+      </div>
+      <div class="channels-grid">
+        <div class="channel-row">
+          <div class="channel-name"><span class="ch-ico">♪</span> TikTok</div>
+          <div class="channel-detail"><strong>Lead platform.</strong> Trend-led short video, family day-out clips, challenges, and food &amp; heritage moments. The Village's top channel for reach.</div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-name"><span class="ch-ico">📷</span> Instagram</div>
+          <div class="channel-detail">Reels as the core format, plus carousels for deeper storytelling — a strong engagement driver when designed well — and Stories for real-time daily coverage. The Village's home base.</div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-name"><span class="ch-ico">▶</span> YouTube</div>
+          <div class="channel-detail">Heritage mini-docs, recap films, and artisan/craft features — plus Shorts to extend the reach of our vertical video. The destination for content that rewards a longer watch.</div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-name"><span class="ch-ico">👻</span> Snapchat</div>
+          <div class="channel-detail">Live, in-the-moment coverage and location-based content during the event — reaching local families where they already are.</div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-name"><span class="ch-ico">𝕏</span> X (Twitter)</div>
+          <div class="channel-detail">Real-time updates, announcements, and event-day news — concise, timely, and link-driven.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TikTok Strategy Deep-Dive -->
+    <div class="tiktok-block fade-up">
+      <div class="tiktok-head">
+        <span class="tag">Our Lead Platform</span>
+        <h3>The TikTok Strategy</h3>
+        <p>TikTok is the Village's strongest channel — 15M views in its dedicated season prove it. Here's how we plan, produce, and grow it deliberately, not by chance.</p>
+      </div>
+
+      <div class="tiktok-pillars">
+        <div class="tiktok-pillar">
+          <div class="ttp-ico">🎯</div>
+          <h4>Trend-Led, Fast</h4>
+          <p>We monitor trending sounds, formats, and challenges daily and adapt the Village's content to ride them while they peak — turning everyday village moments into native, of-the-moment TikToks.</p>
+        </div>
+        <div class="tiktok-pillar">
+          <div class="ttp-ico">⚡</div>
+          <h4>Volume &amp; Velocity</h4>
+          <p>Short-form thrives on frequency. We post multiple times daily, front-loading the moments families love most — rides, performances, food, and heritage — when engagement peaks.</p>
+        </div>
+        <div class="tiktok-pillar">
+          <div class="ttp-ico">🤝</div>
+          <h4>Creators &amp; Duets</h4>
+          <p>Family, food, and Emirati-culture creators extend reach into new communities, with duets and stitches amplifying the Village's most relatable content.</p>
+        </div>
+        <div class="tiktok-pillar">
+          <div class="ttp-ico">🌙</div>
+          <h4>Timed for the Algorithm</h4>
+          <p>Posting is scheduled around proven high-activity windows — especially evenings and weekends when families plan and share their visits.</p>
+        </div>
+      </div>
+
+      <div class="tiktok-plan">
+        <div class="tiktok-plan-label">Content Planning · What We Post</div>
+        <div class="tiktok-plan-grid">
+          <div class="ttpl-item"><strong>Teasers &amp; countdowns</strong><span>Pre-event hype — zone reveals, "what's new," first looks</span></div>
+          <div class="ttpl-item"><strong>Family day-out clips</strong><span>"Things to do at the Village" — rides, zones, activities</span></div>
+          <div class="ttpl-item"><strong>Challenges &amp; trends</strong><span>Family-friendly, trend-jacked formats built for participation</span></div>
+          <div class="ttpl-item"><strong>Food &amp; Souk moments</strong><span>Dining, retail, and market content that drives visits</span></div>
+          <div class="ttpl-item"><strong>Heritage &amp; human stories</strong><span>Emirati culture and craft, told in an authentic voice</span></div>
+          <div class="ttpl-item"><strong>Behind-the-scenes</strong><span>The making of the Village — warm, authentic, relatable</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="cards-bridge fade-up">The formats below bring those four pillars to life — each one mapped to the audience and account it serves best.</p>
+
+    <div class="ideas-grid">
+      <div class="idea-card fade-up fade-up-d1">
+        <span class="idea-badge" style="background:rgba(47,138,118,0.1); color:var(--sema);">🗣️ Visitor Testimonials</span>
+        <h4>Real Voices of Liwa</h4>
+        <p>Short, on-the-spot testimonials captured with real visitors — families, first-timers, returning guests, and the vendors and artisans who make the Village. Authentic, unscripted reactions that build credibility and show the Village through the eyes of those who live it.</p>
+      </div>
+      <div class="idea-card fade-up fade-up-d2">
+        <span class="idea-badge" style="background:rgba(47,138,118,0.09); color:var(--teal);">🎤 Interview Series</span>
+        <h4>Voices of Liwa</h4>
+        <p>Short, on-the-ground interviews with visitors, families, local residents, and the Village's artisans and vendors. Real reactions and authentic stories — the relatable, highly shareable content that builds community and surfaces the audience's own voice.</p>
+      </div>
+      <div class="idea-card fade-up fade-up-d3">
+        <span class="idea-badge" style="background:rgba(138,107,57,0.12); color:var(--zour);">🏛️ Heritage Series</span>
+        <h4>The Story of Liwa</h4>
+        <p>Short documentary-style reels exploring Emirati heritage, craft, and the cultural depth of the Village — the traditions and stories that give it its soul.</p>
+      </div>
+      <div class="idea-card fade-up fade-up-d1">
+        <span class="idea-badge" style="background:rgba(196,106,46,0.12); color:var(--argoub);">👨‍👩‍👧 Family Content</span>
+        <h4>The Village Through Their Eyes</h4>
+        <p>Content told from a family's perspective — kids on the rides, families exploring the Souk, parents making memories. The everyday magic of the Village, seen by the people who live it.</p>
+      </div>
+      <div class="idea-card fade-up fade-up-d2">
+        <span class="idea-badge" style="background:rgba(162,84,44,0.09); color:var(--ghubsha);">📣 UGC Amplification</span>
+        <h4>Community Takeovers</h4>
+        <p>A structured strategy to surface and amplify user-generated content from visitors — the most underutilised asset in the previous seasons. Real people, real reactions, real credibility.</p>
+      </div>
+
+      <div class="idea-card fade-up fade-up-d1">
+        <span class="idea-badge" style="background:rgba(47,138,118,0.1); color:var(--sema);">🎧 Sensory Series</span>
+        <h4>The Sounds of the Village</h4>
+        <p>Immersive, ASMR-style short-form: the buzz of a busy Souk, sizzling food stalls, children's laughter, traditional music, and the hush of the desert at dusk. Distinctive, deeply on-brand sensory content that stops the scroll and feels unmistakably Liwa Village.</p>
+      </div>
+    </div>
+
+    <!-- Creative Direction / References -->
+    <div class="refs-block fade-up">
+      <div class="cpillars-head" style="text-align:center; margin-bottom:32px;">
+        <span class="tag">Creative Direction</span>
+        <h3 style="font-size:1.5rem; font-weight:800; margin:12px 0 8px;">The References We're Building Toward</h3>
+        <p style="font-size:0.9rem; color:var(--muted); max-width:640px; margin:0 auto; line-height:1.6;">The direction and production standard we're aiming for @LiwaVillage, shown through real examples — every reference is tagged to an RFP content pillar. Tap any card to view. <span style="color:var(--gold);">Polished</span> = cinematic/high-edit · <span style="color:var(--teal);">UGC</span> = audience/organic.</p>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🏛️ Heritage</span><h4>Heritage &amp; Culture</h4><span class="refs-count">10 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@polaristravel.us/video/7236826262369537326" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@polaristravel.us</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">AlUla coverage — travel creator</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@adrian.baias/video/7077550450727341318" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@adrian.baias</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Cinematic AlUla footage</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@cecilxuofficial/video/7385772991952538886" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@cecilxuofficial</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Creator — heritage destination</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@scentlibraryofficial/video/7586001710829620501" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@scentlibraryofficial</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Qasr Al Hosn — branded</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@sofiaslez/video/7597462230728314130" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@sofiaslez</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">A visit to Qasr Al Hosn</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@._wbk/video/7598281453553749255" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@._wbk</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Qasr Al Hosn — personal/first-person</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@al5azraji/video/7601533774815431956" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@al5azraji</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Qasr Al Hosn — local voice</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@khalideyad0/video/7628993615171259669" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@khalideyad0</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Qasr Al Hosn — creator</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@visit_sharjah/video/7606765007245692180" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@visit_sharjah</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Sharjah heritage — official</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@qatarmuseums/video/7577370019953118472" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@qatarmuseums</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Culture &amp; museums, cinematic</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🏛️ Heritage</span><h4>Traditional Crafts &amp; Artisans</h4><span class="refs-count">3 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@experiencealula/video/7552872991760108832" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@experiencealula</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">AlUla craft — cinematic artisanship</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@kashesh.global/video/7350936121443994900" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@kashesh.global</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Emirati craft &amp; vintage</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@turathuna_ae/video/7649788383018994951" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@turathuna_ae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Turathuna — local crafts</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🎈 Experiences</span><h4>Family &amp; Kids Content</h4><span class="refs-count">11 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7646168007533743378" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7635367956410682632" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7601997934695140615" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7599770130930732295" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7567691483931839751" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7483629187358592264" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7471222480791801143" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7467991296095948040" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Family &amp; kids — Global Village (closest reference)</span></a>
+          <a class="ref-card" href="https://www.instagram.com/yasisland/reel/DaXlT9AAK0K/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@yasisland</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Rides &amp; landmarks, high production</span></a>
+          <a class="ref-card" href="https://www.instagram.com/imgworlds/reel/DaXO63kiUDO/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@imgworlds</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">The largest indoor park</span></a>
+          <a class="ref-card" href="https://www.instagram.com/globalvillageuae/reel/DaSNvbPiGwE/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageuae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Giant wheel &amp; rides — family</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🎈 Experiences</span><h4>Local Food, Market &amp; Dining</h4><span class="refs-count">8 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7453925566421536005" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Food &amp; souk — Global Village</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7583779612430322964" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Varied food &amp; vendor stalls</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@saadatexplores/video/7568885817716870420" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@saadatexplores</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Creator exploring the food</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@beautifuldestinations/video/7371464643908341024" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@beautifuldestinations</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Cinematic food cinematography</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@beautifuldestinations/video/7371008609049709857" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@beautifuldestinations</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Food &amp; destination, cinematic</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@amrelhady_/video/7503564054380825864" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@amrelhady_</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Food creator</span></a>
+          <a class="ref-card" href="https://www.instagram.com/foodsheikh/reel/DaDfNVKIXx4/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@foodsheikh</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Emirati food creator</span></a>
+          <a class="ref-card" href="https://www.instagram.com/visit.dubai/reel/DaYA73SDGeV/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@visit.dubai</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Official food &amp; lifestyle</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🏛️ Heritage</span><h4>Traditional Sports</h4><span class="refs-count">5 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@efcuae/video/7521324904042466568" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@efcuae</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Emirati Falconers&#x27; Club — falconry</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@omgad2026/video/7545130049523961096" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@omgad2026</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">UAE falconry challenge</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@aasmah.j/video/7637463583919443208" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@aasmah.j</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Equestrian competitions in the UAE</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@uaepresidentcup/video/7544697360291581202" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@uaepresidentcup</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">President&#x27;s Cup — equestrian &amp; camel, official</span></a>
+          <a class="ref-card" href="https://www.instagram.com/qasralhosn/p/DaSKnsvAHHi/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@qasralhosn</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Traditional sports — Instagram</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🎈 Experiences</span><h4>Plan Your Visit &amp; Travel Tips</h4><span class="refs-count">3 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.instagram.com/visitabudhabi/reel/DZZ8PufChzu/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@visitabudhabi</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Local know-before-you-go</span></a>
+          <a class="ref-card" href="https://www.instagram.com/visit.dubai/reel/DaZu0dGEmxj/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@visit.dubai</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Official visit tips</span></a>
+          <a class="ref-card" href="https://www.instagram.com/visitsaudi/reel/DDpNXBUCHXE/" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@visitsaudi</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Regional travel tips</span></a>
+        </div>
+      </div>
+
+      <div class="refs-shared-head">
+        <span class="refs-shared-tag">Shared Library · Both Accounts</span>
+        <p class="refs-shared-sub">References that apply across both @LiwaFest and @LiwaVillage — the cross-cutting formats we build on for the Village.</p>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🤝 Community</span><h4>Visitor Testimonials</h4><span class="refs-count">2 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@dubai.society/video/7563304649319648519" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@dubai.society</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Street vox-pop — authentic visitor voices</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@dubai.society/video/7636093044789366024" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@dubai.society</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Honest, on-the-street audience interaction</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🤝 Community</span><h4>Interview Series (Voices of Liwa)</h4><span class="refs-count">3 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@dubai.society/video/7491714973949807890" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@dubai.society</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">One simple question opens an interview — a repeatable format</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@dubai.society/video/7634945559261875464" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@dubai.society</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Short, high-engagement interview</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@dubai.society/video/7641254525965192456" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@dubai.society</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Quick Q&amp;A — warm, friendly tone</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🤝 Community</span><h4>UGC Amplification &amp; Community</h4><span class="refs-count">3 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@coachella/video/7633956922252610830" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@coachella</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Blending attendee content into the official narrative</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@tomorrowland/video/7655740848931409184" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@tomorrowland</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Amplifying crowd moments</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7635367956410682632" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Reposting visitor content</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🎈 Experiences</span><h4>Sensory / ASMR Series</h4><span class="refs-count">4 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@sensorysieasmr/video/7617590612816153887" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@sensorysieasmr</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Sensory ASMR — sound-and-stillness style</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@sensorysieasmr/video/7607221723506691358" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@sensorysieasmr</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Close sensory shot that holds attention</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@sensorysieasmr/video/7605734562458570014" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@sensorysieasmr</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Sound design that stops the scroll</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@sensorysieasmr/video/7604991362076822815" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@sensorysieasmr</span><span class="ref-play">▶</span></div><span class="ref-type ugc">UGC</span><span class="ref-note">Tactile, sensory feel — a reference for &#x27;Sound of the Desert&#x27;</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🎈 Experiences</span><h4>Experiences / Things To Do</h4><span class="refs-count">3 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@beautifuldestinations/video/7655735234910063894" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@beautifuldestinations</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Cinematic experience/destination — drives FOMO</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@beautifuldestinations/video/7655345864658980118" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@beautifuldestinations</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Visual things-to-do content</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@globalvillageae/video/7599770130930732295" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@globalvillageae</span><span class="ref-play">▶</span></div><span class="ref-type mixed">Polished + UGC</span><span class="ref-note">Rides &amp; family experiences</span></a>
+        </div>
+      </div>
+
+      <div class="refs-cat">
+        <div class="refs-cat-head"><span class="refs-pillar">🎈 Experiences</span><h4>Cinematic Travel (International)</h4><span class="refs-count">4 references</span></div>
+        <div class="refs-grid">
+          <a class="ref-card" href="https://www.tiktok.com/@beautifuldestinations/video/7345101576895237409" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@beautifuldestinations</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">The leading reference for cinematic travel</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@beautifuldestinations/video/7328363588731587873" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@beautifuldestinations</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">High-quality destination footage</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@beautifuldestinations/video/7312877164917984545" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@beautifuldestinations</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Visual travel storytelling</span></a>
+          <a class="ref-card" href="https://www.tiktok.com/@experiencealula/video/7647514807129722145" target="_blank" rel="noopener"><div class="ref-card-top"><span class="ref-handle">@experiencealula</span><span class="ref-play">▶</span></div><span class="ref-type polished">Polished</span><span class="ref-note">Desert destination for the international traveller</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctx-img-pair fade-up">
+      <div class="ctx-img">
+        <img src="web_assets/v_g_cars.jpg" alt="Classic and vintage car exhibition at Liwa Village" loading="lazy" style="object-position:center center;" />
+      </div>
+      <div class="ctx-img">
+        <img src="web_assets/v_ctx_bumpers.jpg" alt="Family bumper cars at Liwa Village" loading="lazy" style="object-position:center 60%;" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── ANNOUNCEMENT VIDEO ────────────────────────────────────────── -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-label fade-up">
+      <span class="section-label-num" style="background:rgba(224,162,46,0.16); color:var(--gold);">12 · Announcement</span>
+      <div class="section-label-line" style="background:rgba(255,255,255,0.1);"></div>
+    </div>
+    <div class="fade-up"><span class="tag" style="background:rgba(224,162,46,0.16); color:var(--gold);">Exclusive Preview</span></div>
+    <h2 class="section-title fade-up fade-up-d1" style="color:var(--white);">The Announcement<br />Video is Here.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      We've already started working on next year. A complementary announcement video — crafted to set the tone for Liwa 2026–2027 — is included as part of this proposal.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <a class="vid-card fade-up" href="https://drive.google.com/file/d/1YYYezxjGgJWeS-dZN42-vNCW7z38NiD0/view" target="_blank" rel="noopener" style="max-width:720px; margin:0 auto; display:block;">
+      <div class="vid-card-thumb">
+        <img src="web_assets/thumb_announcement.jpg" alt="Liwa 2026–2027 Announcement Film thumbnail" loading="lazy" />
+        <div class="vid-play">▶</div>
+      </div>
+      <div class="vid-card-info">
+        <div class="vid-card-label">Exclusive Preview · 2026–2027</div>
+        <div class="vid-card-title">Liwa Village — Announcement Film</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ─── WHY US ────────────────────────────────────────────────────── -->
+<section id="why-us" class="section section-dark" style="background: #111111; position:relative;">
+  <div class="why-bg-real">
+    <img src="web_assets/v_whyus_bg.jpg" alt="LIWA neon sign at night" loading="lazy" />
+  </div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-label fade-up">
+      <span class="section-label-num" style="background:rgba(224,162,46,0.16); color:var(--gold);">13 · Why Us</span>
+      <div class="section-label-line" style="background:rgba(255,255,255,0.1);"></div>
+    </div>
+    <div class="fade-up"><span class="tag" style="background:rgba(224,162,46,0.16); color:var(--gold);">The Case for Continuity</span></div>
+    <h2 class="section-title fade-up fade-up-d1" style="color:var(--white);">No One Knows Liwa<br />Like We Do.</h2>
+    <p class="section-sub fade-up fade-up-d2">
+      Three years at Liwa means we know this event from the inside out — the DCT protocols, the permit process, the approval chains, the key zones, the lighting conditions at every hour, the logistics of moving a 31-person team across the desert, and the moments that matter most. No ramp-up. No learning curve. Just results from day one.
+    </p>
+    <div class="divider fade-up fade-up-d3"></div>
+
+    <div class="why-grid fade-up">
+      <div class="why-card">
+        <div class="why-num">3</div>
+        <h4>Years of Media Coverage</h4>
+        <p>We've filmed every zone, every activity, every weather condition Liwa has to offer. We don't discover the grounds — we own them.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">2</div>
+        <h4>Years of Social Media</h4>
+        <p>We built this audience from scratch. We know what they love, when they engage, and how to keep them coming back year after year.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">31</div>
+        <h4>Battle-Tested Team Members</h4>
+        <p>Not a team assembled for one job — a team that's done this together. Communication, roles, and trust are already in place.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">23</div>
+        <h4>Days × 3 Seasons of Delivery</h4>
+        <p>We have never missed a deadline. Never failed to deliver same-day content. Never lost a day to logistics. That's our track record.</p>
+      </div>
+    </div>
+
+    <div class="why-statements fade-up">
+      <div class="why-stmt">
+        <div class="why-stmt-icon">🤝</div>
+        <div class="why-stmt-text">
+          <h4>Trusted by DCT and Event Leads</h4>
+          <p>We've spent three years building working relationships with the festival's directors and DCT coordinators. We understand the protocol, the sensitivities, and the chain of approvals. A new team would need an entire season just to get there.</p>
+        </div>
+      </div>
+      <div class="why-stmt">
+        <div class="why-stmt-icon">📍</div>
+        <div class="why-stmt-text">
+          <h4>We Know Every Meter of the Grounds</h4>
+          <p>The best angle for the Moreeb Dune launch. The golden hour light over the Village. The hidden paths between zones. The ideal positions for drone clearance. This knowledge took years to build — and it's already ours.</p>
+        </div>
+      </div>
+      <div class="why-stmt">
+        <div class="why-stmt-icon">⚡</div>
+        <div class="why-stmt-text">
+          <h4>Zero Ramp-Up Time</h4>
+          <p>While other agencies would spend their first week finding their feet, we arrive ready. Day one is a full operation, not a trial run. For a 23-day event, that head start is invaluable.</p>
+        </div>
+      </div>
+      <div class="why-stmt">
+        <div class="why-stmt-icon">📈</div>
+        <div class="why-stmt-text">
+          <h4>We Get Sharper Every Season</h4>
+          <p>Every season we've sharpened our craft — deeper data insight, sharper content instincts, and a clearer understanding of what moves the Liwa audience. Each year we learn, and each year we bring that learning back to the festival.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section id="cta">
+  <div class="container">
+    <div class="fade-up">
+      <p class="hero-eyebrow" style="justify-content:center; color:var(--gold); font-size:0.75rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; display:flex; align-items:center; gap:12px; margin-bottom:28px;">
+        <span style="width:32px; height:1px; background:rgba(224,162,46,0.6);"></span>
+        Graphite Studio × Liwa Village
+        <span style="width:32px; height:1px; background:rgba(224,162,46,0.6);"></span>
+      </p>
+    </div>
+    <h2 class="cta-title fade-up fade-up-d1">
+      Let's Give the Village<br /><em>Its Voice Back.</em>
+    </h2>
+    <p class="cta-sub fade-up fade-up-d2">
+      We've spent three years earning this moment. The team is assembled, the strategy is set, and we know the Village's story better than anyone. Let's make @LiwaVillage 2026–2027 its strongest season yet.
+    </p>
+    <div class="cta-actions fade-up fade-up-d3">
+      <a href="mailto:info@graphitestudio.ae" class="btn btn-primary">Let's Make It Official</a>
+      <a href="#journey" class="btn btn-ghost">Review the Proposal</a>
+    </div>
+
+    <div class="cta-footer fade-up">
+      <div class="cta-footer-brand">Graphite Studio <span>·</span> Liwa Village Proposal 2026–2027</div>
+      <div class="footer-links">
+        <a href="#journey">Journey</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#operations">Operations</a>
+        <a href="#landscape">Landscape</a>
+        <a href="#recommendations">Strategy</a>
+        <a href="#targets">Targets</a>
+        <a href="#proposal">Proposal</a>
+        <a href="#content-vision">Content</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#cta">Let's Talk</a>
+      </div>
+      <div class="cta-footer-info">Confidential · For DCT & Liwa Village Team Use Only</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SCROLL ANIMATION SCRIPT ──────────────────────────────────── -->
+<script>
+  // ── Fade-in on scroll ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // ── Nav active state ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      const id = section.getAttribute('id');
+      if (scrollY >= top && scrollY < top + section.offsetHeight) {
+        navLinks.forEach(link => {
+          link.style.color = link.getAttribute('href') === '#' + id
+            ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.6)';
+        });
+      }
+    });
+  });
+
+  // ── Bar chart animation ──
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.bar-fill[data-w]').forEach(bar => {
+          bar.style.width = bar.getAttribute('data-w') + '%';
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.bar-chart').forEach(el => barObserver.observe(el));
+
+  // ── Ring chart animation ──
+  const ringObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.ring-val[data-pct]').forEach(ring => {
+          const pct = parseFloat(ring.getAttribute('data-pct'));
+          const circumference = 2 * Math.PI * 45; // r=45
+          const offset = circumference - (pct / 100) * circumference;
+          ring.style.strokeDasharray = circumference;
+          ring.style.strokeDashoffset = offset;
+        });
+        ringObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.audience-grid').forEach(el => ringObserver.observe(el));
+</script>
+
+</body>
+</html>
