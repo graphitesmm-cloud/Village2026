@@ -1706,7 +1706,39 @@
 
     /* account-single */
     .account-split.account-single { grid-template-columns: 1fr; max-width: 620px; margin-left: auto; margin-right: auto; }
-</style>
+
+    /* ══════ CLIENT-REQUEST ADDITIONS (light) ══════ */
+    .caption-process { margin-top: 44px; }
+    .cap-proc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    @media (max-width: 760px) { .cap-proc-grid { grid-template-columns: 1fr; } }
+    .cap-proc-step { background: #ffffff; border: 1px solid rgba(56,53,47,0.09); border-radius: 14px;
+      padding: 26px 24px; box-shadow: 0 2px 10px rgba(56,53,47,0.05); }
+    .cap-proc-num { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px;
+      border-radius: 10px; background: var(--teal); color: #fff; font-weight: 800; font-size: 0.9rem; margin-bottom: 14px; }
+    .cap-proc-step.accent .cap-proc-num { background: var(--gold); }
+    .cap-proc-step h4 { font-size: 0.98rem; font-weight: 800; color: var(--charcoal); margin-bottom: 8px; }
+    .cap-proc-step p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    .growth-proj { margin-top: 24px; background: var(--sand); border: 1px solid rgba(56,53,47,0.08);
+      border-radius: 14px; padding: 24px 28px; }
+    .growth-proj-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 16px; }
+    .growth-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    @media (max-width: 640px) { .growth-row { grid-template-columns: 1fr 1fr; } }
+    .growth-item { text-align: center; }
+    .growth-pct { font-size: 1.35rem; font-weight: 900; color: var(--teal); }
+    .growth-metric { font-size: 0.74rem; color: var(--muted); font-weight: 600; margin-top: 4px; }
+    .growth-disclaimer { font-size: 0.72rem; color: var(--muted); line-height: 1.6; margin-top: 16px;
+      font-style: italic; border-top: 1px solid rgba(56,53,47,0.1); padding-top: 14px; }
+
+    .tt-callout { margin-top: 18px; display: flex; gap: 14px; align-items: flex-start;
+      background: linear-gradient(135deg, rgba(47,138,118,0.08), rgba(224,162,46,0.08));
+      border: 1px solid rgba(47,138,118,0.2); border-radius: 12px; padding: 18px 22px; }
+    .tt-callout-ico { font-size: 1.4rem; flex-shrink: 0; }
+    .tt-callout h5 { font-size: 0.9rem; font-weight: 800; color: var(--teal); margin-bottom: 5px; }
+    .tt-callout p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+  </style>
 </head>
 <body>
 
@@ -2831,6 +2863,17 @@
       <div class="kpi-extra-item"><span class="kpi-ico">🎯</span> 20% of content exceeding benchmark performance</div>
       <div class="kpi-extra-item"><span class="kpi-ico">🔄</span> Conversions &amp; click-throughs to Village channels</div>
     </div>
+    <div class="growth-proj fade-up">
+      <div class="growth-proj-label">Projected Performance</div>
+      <div class="growth-row">
+        <div class="growth-item"><div class="growth-pct">≈ +15%</div><div class="growth-metric">Video Views</div></div>
+        <div class="growth-item"><div class="growth-pct">≈ +15%</div><div class="growth-metric">Reach</div></div>
+        <div class="growth-item"><div class="growth-pct">≈ +15%</div><div class="growth-metric">Engagement</div></div>
+        <div class="growth-item"><div class="growth-pct">≈ +15%</div><div class="growth-metric">Followers</div></div>
+      </div>
+      <p class="growth-disclaimer">These figures are projected estimates. Actual reach, views, and follower numbers also depend on the season's media-buying budget, which is planned separately from social media content.</p>
+    </div>
+
   </div>
 </section>
 
@@ -2909,7 +2952,7 @@
           </div>
           <div class="pillar-body">
             <ul>
-              <li>@LiwaVillage account management (with @LiwaFest coordinated alongside)</li>
+              <li>A dedicated @LiwaVillage account manager, coordinating directly with the @LiwaFest account manager</li>
               <li>Monthly content calendars in Arabic &amp; English, with an Emirati native content writer</li>
               <li>Daily publishing across Instagram, TikTok, YouTube, Snapchat, X</li>
               <li>Stories coverage and real-time publishing throughout each event day</li>
@@ -2920,6 +2963,13 @@
           </div>
         </div>
       </div>
+    <div class="cap-takeaway fade-up">
+      <div class="cap-takeaway-icon">🤝</div>
+      <div>
+        <h4>Dedicated Account Management</h4>
+        <p>Each account is assigned its own dedicated account manager — one for @LiwaVillage and one for @LiwaFest — responsible for coordination, content planning, publishing, and client communication. The two work in close sync, so both accounts move together while each keeps its own distinct voice.</p>
+      </div>
+    </div>
     </div>
   </div>
 </section>
@@ -3075,6 +3125,40 @@
           <div class="ttpl-item"><strong>Food &amp; Souk moments</strong><span>Dining, retail, and market content that drives visits</span></div>
           <div class="ttpl-item"><strong>Heritage &amp; human stories</strong><span>Emirati culture and craft, told in an authentic voice</span></div>
           <div class="ttpl-item"><strong>Behind-the-scenes</strong><span>The making of the Village — warm, authentic, relatable</span></div>
+          <div class="ttpl-item"><strong>Original TikTok series</strong><span>Platform-first recurring concepts built for TikTok, not repurposed</span></div>
+          <div class="ttpl-item"><strong>UGC-style creator content</strong><span>Authentic, creator-led videos in native TikTok language</span></div>
+        </div>
+      </div>
+      <div class="tt-callout">
+        <div class="tt-callout-ico">🎬</div>
+        <div>
+          <h5>TikTok-First &amp; UGC-Led</h5>
+          <p>Beyond trend-jacking: we develop original, platform-native concepts and recurring series, plus UGC-style videos produced specifically for TikTok — fresh creative built for the platform, not repurposed from other feeds.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption-process fade-up">
+      <div class="tiktok-head" style="margin-bottom:24px;">
+        <span class="tag">Language &amp; Cultural Accuracy</span>
+        <h3 style="font-size:1.4rem; font-weight:800; margin:12px 0 8px;">A Dedicated Emirati Captioning Process</h3>
+        <p style="max-width:640px; margin:0 auto;">Every Arabic caption is written by a dedicated Emirati content writer and passes a second-stage review before publishing, with the English version developed in parallel — so the message stays culturally accurate, on-tone, and consistent across both languages.</p>
+      </div>
+      <div class="cap-proc-grid">
+        <div class="cap-proc-step">
+          <div class="cap-proc-num">1</div>
+          <h4>Written by an Emirati</h4>
+          <p>A dedicated Emirati content writer drafts every Arabic caption — grounded in local dialect, cultural nuance, and the authentic Emirati tone of voice.</p>
+        </div>
+        <div class="cap-proc-step accent">
+          <div class="cap-proc-num">2</div>
+          <h4>Reviewed &amp; Approved</h4>
+          <p>A second qualified team member reviews, verifies, and approves each caption before publishing — a built-in check for accuracy, clarity, and cultural relevance.</p>
+        </div>
+        <div class="cap-proc-step">
+          <div class="cap-proc-num">3</div>
+          <h4>Bilingual in Parallel</h4>
+          <p>English captions are developed simultaneously, so both languages carry the same message with full consistency and clarity.</p>
         </div>
       </div>
     </div>
